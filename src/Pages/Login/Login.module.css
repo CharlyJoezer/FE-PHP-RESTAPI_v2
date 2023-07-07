@@ -1,0 +1,8 @@
+.container_login {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-rows: 10% 85% 5%;
+}
