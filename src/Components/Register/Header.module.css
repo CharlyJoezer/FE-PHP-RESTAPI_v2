@@ -1,0 +1,18 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 5px #ccc;
+}
+.navbar a {
+  display: flex;
+  align-items: center;
+}
+.navbar img {
+  width: 120px;
+}
