@@ -60,6 +60,7 @@ const Content = () => {
                 name="name"
                 placeholder="Nama"
                 autoComplete="off"
+                required
                 className={error.name && css.error_input}
               />
               {error.name && (
@@ -72,6 +73,7 @@ const Content = () => {
                 name="email"
                 placeholder="Email address"
                 autoComplete="off"
+                required
                 className={error.email && css.error_input}
               />
               {error.email && (
@@ -84,6 +86,7 @@ const Content = () => {
                 name="password"
                 placeholder="Password"
                 autoComplete="off"
+                required
                 className={error.password && css.error_input}
               />
               {error.password && (
