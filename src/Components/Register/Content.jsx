@@ -9,6 +9,14 @@ const Content = () => {
           <img src="https://files.itemku.com/illustration/tokoku/login/seller-login.png" />
         </div>
         <form className={css.form_input}>
+          <div className={css.input_username}>
+            <input
+              type="text"
+              name="username"
+              placeholder="Nama"
+              autoComplete="off"
+            />
+          </div>
           <div className={css.input_email}>
             <input
               type="email"
@@ -22,14 +30,6 @@ const Content = () => {
               type="password"
               name="password"
               placeholder="Password"
-              autoComplete="off"
-            />
-          </div>
-          <div className={css.input_password}>
-            <input
-              type="password"
-              name="password_verify"
-              placeholder="Password Verify"
               autoComplete="off"
             />
           </div>

@@ -27,14 +27,16 @@
   padding-bottom: 25px;
 }
 .input_email,
-.input_password {
+.input_password,
+.input_username {
   margin-bottom: 12px;
   width: 100%;
   text-align: center;
   line-height: 1;
 }
 .input_email input,
-.input_password input {
+.input_password input,
+.input_username input {
   height: 50px;
   width: 50%;
   border: 0.5px solid #ddd;
@@ -52,7 +54,8 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .input_email input:focus,
-.input_password input:focus {
+.input_password input:focus,
+.input_username input:focus {
   border: 1px solid rgba(64, 172, 255, 0.687);
 }
 .btn_submit {
