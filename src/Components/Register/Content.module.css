@@ -58,6 +58,17 @@
 .input_username input:focus {
   border: 1px solid rgba(64, 172, 255, 0.687);
 }
+.error_input{
+  border: 1px solid red!important;
+}
+.error_message{
+  color: red;
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 14px;
+  font-style: italic;
+}
 .btn_submit {
   text-align: center;
 }
