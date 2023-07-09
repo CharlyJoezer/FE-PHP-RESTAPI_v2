@@ -55,7 +55,7 @@ const Navbar = (props) => {
         <img src="assets/icon/bell-icon.png" alt="bell-icon" />
       </div>
       <div className={css.vertical_line}></div>
-      {props.users.name
+      {Object.keys(props.users).length > 0
       ? 
         <Link to="/profil" className={css.auth_user}>
           <img src="assets/icon/profil.png" alt="" />
