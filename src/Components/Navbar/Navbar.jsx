@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import css from "../Navbar/Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [search, setSearch] = useState("");
   const [searchImage, setSearchImage] = useState(true);
 
@@ -55,9 +55,17 @@ const Navbar = () => {
         <img src="assets/icon/bell-icon.png" alt="bell-icon" />
       </div>
       <div className={css.vertical_line}></div>
-      <div className={css.btn_login}>
-        <Link to="/login">Masuk</Link>
-      </div>
+      {props.users.name
+      ? 
+        <Link to="/profil" className={css.auth_user}>
+          <img src="assets/icon/profil.png" alt="" />
+          <span>{props.users.name}</span>
+        </Link>
+      :
+        <div className={css.btn_login}>
+          <Link to="/login">Masuk</Link>
+        </div>
+      }
     </nav>
   );
 };

@@ -89,3 +89,32 @@
 .btn_login button:hover {
   background-color: rgb(14, 110, 184);
 }
+.auth_user{
+  display: flex;
+  align-items: center;
+  padding: 8px 8px;
+  margin: 0px 8px;
+  border-radius: 10px;
+  color: black;
+  width: 80px;
+  cursor: pointer;
+  transition: 0.5s;
+  text-decoration: none;
+}
+.auth_user img {
+  width: 25px;
+  height: 25px;
+  box-shadow: 0 0 5px #ccc;
+  border-radius: 50%;
+  padding: 2px;
+}
+.auth_user span {
+  font-size: 14px;
+  padding: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.auth_user:hover{
+  background-color: rgba(128, 128, 128, 0.087);
+}
