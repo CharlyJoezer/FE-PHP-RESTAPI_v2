@@ -3,6 +3,7 @@ import {useState, useEffect} from "react"
 import Navbar from "../../Components/Navbar/Navbar"
 import {Cookie} from "../../Auth/Cookies"
 import Header from "../../Components/Profil/Header"
+import Content from "../../Components/Profil/Content"
 
 
 const Profil = () => {
@@ -37,6 +38,7 @@ const Profil = () => {
             <Navbar users={user}/>
             <div className={css.container_profil}>
                 <Header />
+                <Content />
             </div>
         </>
     )
