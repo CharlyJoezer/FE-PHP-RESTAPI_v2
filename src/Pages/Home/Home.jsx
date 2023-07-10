@@ -5,6 +5,7 @@ import Product from "../../Components/Home/Product.jsx";
 import css from "../Home/Home.module.css";
 import {Cookie} from '../../Auth/Cookies.js'
 import { useEffect, useState } from "react";
+import Header from "../../Components/Home/Header.jsx"
 
 const Home = () => {
   document.title = "Itemku";
@@ -38,6 +39,7 @@ const Home = () => {
     <>
       <Navbar users={user} />
       <div className={css.container_home}>
+        <Header />
         <Slider />
         <Category />
         <div className={css.text_header}>Temukan Produkmu</div>
