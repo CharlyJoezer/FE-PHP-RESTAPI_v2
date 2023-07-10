@@ -43,6 +43,16 @@ const Content = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className={css.about_itemku}>
+                    <div className={css.text}>Tentang Kami</div>
+                    <div className={css.list_about}>
+                        <div className={css.about_item}>
+                            <div className={css.about_item_text}>Tentang Itemku</div>
+                            <div className={css.about_item_arrow}>&rarr;</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

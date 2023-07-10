@@ -40,7 +40,7 @@
     color: #555;
 }
 .help_information {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .help_information .text{
     font-size: 18px;
@@ -65,4 +65,30 @@
 .help_item .sub_text{
     font-size: 13px;
     color: #888;
+}
+.about_itemku .text{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+.about_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 10px;
+    padding-right: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.about_item:hover{
+    background-color: #ddd;
+}
+.about_item .about_item_text{
+    font-size: 15px;
+}
+.about_item .about_item_arrow{
+    font-size: 25px;
 }
