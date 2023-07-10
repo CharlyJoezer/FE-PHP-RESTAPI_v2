@@ -42,7 +42,6 @@ const Home = () => {
         <Header />
         <Slider />
         <Category />
-        <div className={css.text_header}>Temukan Produkmu</div>
         <Product />
       </div>
     </>

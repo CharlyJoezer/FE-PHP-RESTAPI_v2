@@ -23,6 +23,8 @@ const Product = () => {
       []
     );
     return (
+      <div className={css.container_product}>
+        <div className={css.text_header}>Temukan Produkmu</div>
         <div className={css.products}>
         {!loading && "No Product"}
         {loading && 
@@ -46,6 +48,7 @@ const Product = () => {
             );
           })
         }
+        </div>
       </div>
     )
 }
