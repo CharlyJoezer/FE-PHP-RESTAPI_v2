@@ -25,6 +25,24 @@ const Content = () => {
                         </button>
                     </div>
                 </div>
+
+                <div className={css.help_information}>
+                    <div className={css.text}>Bantuan</div>
+                    <div className={css.list_help}>
+                        <div className={css.help_item}>
+                            <div className={css.help_item_text}>Pusat Bantuan</div>
+                            <div className={css.sub_text}>Temukan pertanyaan kamu di bagian tanya jawab sebelum kamu menghubungi kami.</div>
+                        </div>
+                        <div className={css.help_item}>
+                            <div className={css.help_item_text}>Kendala Pesanan</div>
+                            <div className={css.sub_text}>Temukan solusi dengan cepat bersama penjual tanpa perlu menghubungi CS itemku terlebih dahulu.</div>
+                        </div>
+                        <div className={css.help_item}>
+                            <div className={css.help_item_text}>Komplain</div>
+                            <div className={css.sub_text}>Cek komplain yang kamu ajukan ke itemku disini.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )
