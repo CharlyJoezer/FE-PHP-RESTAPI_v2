@@ -1,0 +1,86 @@
+.header_wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  height: 200px;
+  background-color: rgb(31, 120, 189);
+}
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  height: 200px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 20px 25px;
+}
+.profil_user {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+.profil_user .profil_image {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 0 1px #ddd;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 50%;
+}
+.profil_desc{
+    padding-left: 10px;
+    line-height: 1;
+}
+.profil_name {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1px;
+}
+.profil_email{
+    color: #ccc;
+    margin-bottom: 5px;
+}
+.profil_wallet{
+    font-weight: 500;
+    border-radius: 25px;
+    padding: 5px 0px;
+    display: flex;
+    align-items: center;
+}
+.profil_wallet img {
+    width: 20px;
+    height: 20px;
+}
+.profil_user span{
+    padding-left: 8px;
+    color: white;
+}
+.list_btn{
+    display: flex;
+    margin-top: 10px;
+}
+.edit_profil_btn, .topup_wallet_btn{
+    width: 250px;
+    margin-right: 10px;
+    padding: 8px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+    background-color: rgb(31, 120, 189);
+    color: white;
+    border: 1px solid white;
+}
+.edit_profil_btn:hover, .topup_wallet_btn:hover{
+
+    color: rgb(31, 120, 189);
+    background-color: white;
+    border: 1px solid white;
+}
