@@ -4,7 +4,7 @@ import Navbar from "../../Components/Navbar/Navbar"
 import {Cookie} from "../../Auth/Cookies"
 import Header from "../../Components/Profil/Header"
 import Content from "../../Components/Profil/Content"
-
+import Footer from "../../Components/Profil/Footer"
 
 const Profil = () => {
     document.title = 'Profil'
@@ -39,6 +39,7 @@ const Profil = () => {
             <div className={css.container_profil}>
                 <Header />
                 <Content />
+                <Footer />
             </div>
         </>
     )
