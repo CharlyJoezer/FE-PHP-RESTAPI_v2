@@ -19,20 +19,20 @@ const Slider = () => {
       >
         <SwiperSlide className={css.swiper_slide}>
           <img
-            src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2023/7/3/4ad660ce-e4cc-46a6-a3c1-398c141d794b.jpg.webp?ect=4g"
-            alt="https://images.tokopedia.net/img/cache/1208/NsjrJu/2023/7/3/4ad660ce-e4cc-46a6-a3c1-398c141d794b.jpg.webp?ect=4g"
+            src="https://imgop.itemku.com/?url=https%3A%2F%2Fd1x91p7vw3vuq8.cloudfront.net%2Fplaceholder%2F2023710%2Fv2m0v12za6fn4fsdu4v7i.png&w=1033&q=75"
+            alt="https://imgop.itemku.com/?url=https%3A%2F%2Fd1x91p7vw3vuq8.cloudfront.net%2Fplaceholder%2F2023710%2Fv2m0v12za6fn4fsdu4v7i.png&w=1033&q=75"
           />
         </SwiperSlide>
         <SwiperSlide className={css.swiper_slide}>
           <img
-            src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2023/7/3/b2b5502e-3627-4c3b-8eac-f7c02175d371.jpg.webp?ect=4g"
-            alt="https://images.tokopedia.net/img/cache/1208/NsjrJu/2023/7/3/b2b5502e-3627-4c3b-8eac-f7c02175d371.jpg.webp?ect=4g"
+            src="https://imgop.itemku.com/?url=https%3A%2F%2Fd1x91p7vw3vuq8.cloudfront.net%2Fplaceholder%2F202378%2Fntmw8utv7vudyydbech5m.png&w=1033&q=75"
+            alt="https://imgop.itemku.com/?url=https%3A%2F%2Fd1x91p7vw3vuq8.cloudfront.net%2Fplaceholder%2F202378%2Fntmw8utv7vudyydbech5m.png&w=1033&q=75"
           />
         </SwiperSlide>
         <SwiperSlide className={css.swiper_slide}>
           <img
-            src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2023/6/30/d8089e55-2112-4427-ace3-ce36f6dcc7d8.jpg.webp?ect=4g"
-            alt="https://images.tokopedia.net/img/cache/1208/NsjrJu/2023/6/30/d8089e55-2112-4427-ace3-ce36f6dcc7d8.jpg.webp?ect=4g"
+            src="https://imgop.itemku.com/?url=https%3A%2F%2Fd1x91p7vw3vuq8.cloudfront.net%2Fplaceholder%2F2023626%2Fhcwk6kzassaifektri2bdi.jpg&w=1033&q=75"
+            alt="https://imgop.itemku.com/?url=https%3A%2F%2Fd1x91p7vw3vuq8.cloudfront.net%2Fplaceholder%2F2023626%2Fhcwk6kzassaifektri2bdi.jpg&w=1033&q=75"
           />
         </SwiperSlide>
       </Swiper>
