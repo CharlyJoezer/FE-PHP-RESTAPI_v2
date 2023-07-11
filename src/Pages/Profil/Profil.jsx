@@ -1,10 +1,11 @@
-import css from "../Profil/Profil"
+import css from "../Profil/Profil.module.css"
 import {useState, useEffect} from "react"
 import Navbar from "../../Components/Navbar/Navbar"
 import {Cookie} from "../../Auth/Cookies"
 import Header from "../../Components/Profil/Header"
 import Content from "../../Components/Profil/Content"
 import Footer from "../../Components/Profil/Footer"
+import AuthRequired from "../../Components/AuthRequired/AuthRequired.jsx"
 
 const Profil = () => {
     document.title = 'Profil'
@@ -37,9 +38,15 @@ const Profil = () => {
         <>
             <Navbar users={user}/>
             <div className={css.container_profil}>
-                <Header />
-                <Content />
-                <Footer />
+                {token !== undefined &&
+                  (<Header />)
+                  (<Content />)
+                  (<Footer />)
+                }
+
+                {token === undefined &&
+                  <AuthRequired />
+                }
             </div>
         </>
     )
