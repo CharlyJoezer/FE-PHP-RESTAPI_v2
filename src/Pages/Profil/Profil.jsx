@@ -39,9 +39,11 @@ const Profil = () => {
             <Navbar users={user}/>
             <div className={css.container_profil}>
                 {token !== undefined &&
-                  (<Header />)
-                  (<Content />)
-                  (<Footer />)
+                  <>
+                    <Header />
+                    <Content />
+                    <Footer />
+                  </>
                 }
 
                 {token === undefined &&
