@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Logout = () => {
     const token = Cookie(' itemku_token')
     const navigate = useNavigate()
-    
+
     useEffect(function(){
         async function getLogout(){
             const url = "http://localhost:8000/api/user/logout"
@@ -19,8 +19,9 @@ const Logout = () => {
 
             const response = request.json()
 
-            if(response.ok){
-                console.log(deleteCookies('itemku_token'))
+            if(request.ok){
+                deleteCookies('itemku_token')
+                return navigate('/')
             }else{
                 return navigate('/login')
             }
