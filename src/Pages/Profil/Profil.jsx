@@ -40,7 +40,7 @@ const Profil = () => {
             <div className={css.container_profil}>
                 {token !== undefined &&
                   <>
-                    <Header />
+                    <Header users={user}/>
                     <Content />
                     <Footer />
                   </>
