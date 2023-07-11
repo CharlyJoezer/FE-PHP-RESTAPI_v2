@@ -12,7 +12,7 @@ const Category = () => {
         </Link>
         <Link className={css.category_item}>
           <img src="assets/icon/pulsa.png" alt="pulsa" />
-          <span className={css.category_name}>Isi Pulsa</span>
+          <span className={css.category_name}>Pulsa & Data</span>
         </Link>
         <Link className={css.category_item}>
           <img src="assets/icon/voucher.png" alt="kode_voucher" />

@@ -15,7 +15,7 @@
   margin-bottom: 20px;
 }
 .header_logo_and_link .itemku_logo {
-  width: 120px;
+  width: 100px;
 }
 .input_search {
   padding-left: 20px;
@@ -25,7 +25,8 @@
 }
 .input_search input {
   outline: none;
-  border: 1px solid #ccc;
+  border: none;
+  background-color: #eee;
   border-radius: 25px;
   padding: 12px;
   padding-left: 15px;
@@ -35,11 +36,13 @@
 }
 .input_search img {
   position: absolute;
-  width: 23px;
-  top: 10px;
+  width: 17px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 35px;
   cursor: pointer;
   bottom: 0;
+  opacity: 0.8;
 }
 .list_link{
     display: flex;
@@ -56,4 +59,16 @@
 .link_item_text{
     color: white;
     padding-left: 5px;
+}
+@media (max-width: 600px) {
+  .header_logo_and_link{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+  .input_search input {
+    padding: 10px;
+  }
+  .link_item svg{
+    width: 25px;
+  }
 }
