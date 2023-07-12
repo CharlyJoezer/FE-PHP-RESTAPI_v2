@@ -1,5 +1,5 @@
 .content{
-    padding: 15px 25px;
+    padding: 15px 13px;
 }
 .info_transaction_list {
     margin-bottom: 20px;
@@ -35,7 +35,7 @@
     margin-bottom: 5px;
 }
 .list_item_text{
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: #555;
 }
@@ -91,4 +91,13 @@
 }
 .about_item .about_item_arrow{
     font-size: 25px;
+}
+@media (max-width: 401px){
+    .info_transaction_list .list .list_item svg{
+        width: 25px;
+        height: 25px;
+    }
+    .list_item_text{
+        font-size: 12px;
+    }
 }

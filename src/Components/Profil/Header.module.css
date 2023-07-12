@@ -13,19 +13,19 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
-  padding: 20px 25px;
+  padding: 20px 13px;
 }
 .logout_btn{
     text-decoration: none;
     position: absolute;
     top: 10px;
-    right: 15px;
+    right: 5px;
     display: flex;
     align-items: center;
     padding: 5px 10px;
 }
 .logout_btn svg {
-    width: 30px;
+    width: 25px;
 }
 .logout_btn span {
     color: white;
@@ -51,13 +51,13 @@
     line-height: 1;
 }
 .profil_name {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: white;
     margin-bottom: 1px;
 }
 .profil_email{
-    color: #ccc;
+    color: #ddd;
     margin-bottom: 5px;
 }
 .profil_wallet{
@@ -97,4 +97,14 @@
 .edit_profil_btn:hover, .topup_wallet_btn:hover{
     color: rgb(31, 120, 189);
     background-color: rgb(242, 242, 242);
+}
+
+@media (max-width: 600px){
+    .logout_btn svg {
+        width: 20px;
+    }
+    .logout_btn span {
+        color: white;
+        font-size: 15px;
+    }
 }
