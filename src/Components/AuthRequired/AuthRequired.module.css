@@ -14,7 +14,7 @@
   background-color: rgb(31, 120, 189);
   border: none;
   padding: 15px 20px;
-  width: 40%;
+  width: 280px;
   font-size: 15px;
   border-radius: 25px;
   color: white;
@@ -26,4 +26,12 @@
 }
 .login_btn:hover {
   background-color: rgb(14, 110, 184);
+}
+@media (max-width: 295px){
+  .login_btn{
+    width: 90%;
+  }
+  .AuthRequired img {
+    width: 80%;
+  }
 }
