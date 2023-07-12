@@ -11,8 +11,9 @@
 .text_header {
   text-align: center;
   padding-bottom: 40px;
-  width: 50%;
-  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
 }
 .text_header img {
   width: 250px;
@@ -109,4 +110,23 @@
   text-decoration: none;
   color: rgb(14, 110, 184);
   font-weight: 500;
+}
+@media (max-width: 520px){
+  .text_header img {
+    width: 200px;
+  }
+  .input_email input,
+  .input_password input {
+    width: 290px;
+    padding: 5px 8px;
+    height: 45px;
+  }
+  .btn_submit button {
+    width: 290px;
+    padding: 14px 0px;
+    font-size: 15px;
+  }
+  .link_register {
+    font-size: 13px;
+  }
 }

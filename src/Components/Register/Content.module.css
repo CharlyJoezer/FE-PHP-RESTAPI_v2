@@ -14,6 +14,7 @@
   font-size: 23px;
   font-weight: bold;
   color: rgb(31, 120, 189);
+  width: 100%;
 }
 .text_header img {
   width: 250px;
@@ -104,4 +105,24 @@
   text-decoration: none;
   color: rgb(14, 110, 184);
   font-weight: 500;
+}
+@media (max-width: 520px){
+  .text_header img {
+    width: 200px;
+  }
+  .input_email input,
+  .input_password input,
+  .input_username input {
+    width: 290px;
+    padding: 5px 8px;
+    height: 45px;
+  }
+  .btn_submit button {
+    width: 290px;
+    padding: 14px 0px;
+    font-size: 15px;
+  }
+  .link_login {
+    font-size: 13px;
+  }
 }
