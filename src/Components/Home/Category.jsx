@@ -27,6 +27,14 @@ const Category = () => {
           <span className={css.category_name}>PC Game</span>
         </Link>
         <Link className={css.category_item}>
+          <img src="assets/icon/listrik.png" alt="listrik" />
+          <span className={css.category_name}>Token Listrik</span>
+        </Link>
+        <Link className={css.category_item}>
+          <img src="assets/icon/pdam.png" alt="pdam" />
+          <span className={css.category_name}>PDAM</span>
+        </Link>
+        <Link className={css.category_item}>
           <img src="assets/icon/other.png" alt="lainnya" />
           <span className={css.category_name}>Lainnya</span>
         </Link>
