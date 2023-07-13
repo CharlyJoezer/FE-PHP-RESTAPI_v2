@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import css from "../Home/Product.module.css"
+import {Link} from "react-router-dom"
 
 
 const Product = () => {
@@ -10,7 +11,7 @@ const Product = () => {
       function () {
         async function getProduct() {
           const request = await fetch(
-            "https://php-restapi.000webhostapp.com/api/product/get"
+            "http://localhost:8000/api/product/get"
           );
   
           const response = await request.json();
@@ -30,7 +31,7 @@ const Product = () => {
         {loading && 
           products.map(function (product) {
             return (
-              <div className={css.product} key={product.id_product}>
+              <Link to={'/product/'+product.id_product} className={css.product} key={product.id_product}>
                 <img
                   className={css.product_image}
                   src="https://images.tokopedia.net/img/cache/300-square/VqbcmM/2023/1/11/fe4b1b65-93b4-4f95-bebf-ddcd9f88c65d.jpg"
@@ -44,7 +45,7 @@ const Product = () => {
                     <span>Jakarta Selatan</span>
                   </span>
                 </div>
-              </div>
+              </Link>
             );
           })
         }
