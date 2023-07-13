@@ -1,0 +1,33 @@
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(15, 124, 208);
+}
+.back_btn {
+  width: 30px;
+  height: 100%;
+  padding: 0px 15px;
+  border-right: 1px solid #eeeeee20;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+.back_btn:hover {
+  background-color: rgb(0, 143, 252);
+  opacity: 1;
+}
+.product_name {
+  margin-left: 15px;
+  color: white;
+  font-weight: 500;
+  font-size: 17px;
+}
+@media (max-width: 550px) {
+  .product_name {
+    font-size: 15px;
+  }
+}

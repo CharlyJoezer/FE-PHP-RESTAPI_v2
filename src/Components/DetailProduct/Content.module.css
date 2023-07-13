@@ -1,0 +1,137 @@
+.container_content{
+    width: 100%;
+    box-sizing: border-box;
+}
+.product_image img{
+    width: 100%;
+}
+.product_about{
+    padding: 5px 12px;
+}
+.product_name{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+.product_category{
+    font-size: 14px;
+    color: #bbb;
+}
+.product_price{
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(255, 145, 0);
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.product_price span{
+    font-weight: normal;
+    color: #333;
+    font-size: 13px;
+    padding-left: 10px;
+}
+.product_statistic{
+    width: 100%;
+    box-sizing: border-box;
+    height: 100px;
+    box-shadow: 0 0 1px #ccc;
+    background-color: #f2f2f2;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.statistic_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 0px;
+    box-sizing: border-box;
+}
+
+.statistic_item svg{
+    width: 30px;
+    height: 30px;
+}
+.statistic_item div {
+    padding-top: 1px;
+    font-size: 12.5px;
+}
+.statistic_item span{
+    font-size: 13px;
+    font-weight: 600;
+}
+.hor_line{
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    margin: 18px 0px;
+}
+.shop_about_wrapper{
+    width: 100%;
+    box-sizing: border-box;
+}
+.shop_about_wrapper .header{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+}
+.shop_about {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    text-decoration: none;
+}
+.shop_profil{
+    padding-left: 8px;
+}
+.shop_about img {
+    border-radius: 50%;
+    width: 45px;
+}
+.shop_profil_name{
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+}
+.shop_profil_active{
+    font-size: 12px;
+    color: #333;
+}
+.product_desc{
+    width: 100%;
+}
+.desc_header{
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    padding-top: 5px;
+}
+.desc_content{
+    font-size: 13px;
+    color: #555;
+}
+
+@media (max-width: 470px){
+    .statistic_item {
+        width: 100px;
+    }
+    .statistic_item svg{
+        width: 25px;
+    }
+    .statistic_item div {
+        padding-top: 2px;
+        font-size: 11px;
+    }
+    .statistic_item span {
+        padding-top: 2px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+    .product_name{
+        font-size: 16px;
+    }
+}
