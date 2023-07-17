@@ -17,9 +17,9 @@ const Profil = () => {
         console.error('Login required')
       }else{
         async function getUserData(token){
-          const url = "http://localhost:8000/api/user/profil"
+          const url = "http://127.0.0.1:8000/api/auth/get-user-data"
           const request = await fetch(url,{
-            method : 'POST',
+            method : 'GET',
             headers : {
               'Authorization' : token
             }
