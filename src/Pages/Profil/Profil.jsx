@@ -6,15 +6,17 @@ import Header from "../../Components/Profil/Header"
 import Content from "../../Components/Profil/Content"
 import Footer from "../../Components/Profil/Footer"
 import AuthRequired from "../../Components/AuthRequired/AuthRequired.jsx"
+import Loading from "../../Components/Loading/Loading"
 
 const Profil = () => {
     document.title = 'Profil'
     const token = Cookie(' itemku_token')
     const [user, setDataUser] = useState([])
-  
+    const [loading, setLoading] = useState(true)
+
     useEffect(function(){
       if(token === undefined){
-        console.error('Login required')
+        setLoading(false)
       }else{
         async function getUserData(token){
           const url = "http://127.0.0.1:8000/api/auth/get-user-data"
@@ -29,6 +31,7 @@ const Profil = () => {
   
           if(request.ok){
             setDataUser(response.data)
+            setLoading(false)
           }
         }
         getUserData(token)
@@ -38,17 +41,18 @@ const Profil = () => {
         <>
             <Navbar users={user}/>
             <div className={css.container_profil}>
-                {token !== undefined &&
-                  <>
-                    <Header users={user}/>
-                    <Content />
-                    <Footer />
-                  </>
-                }
+              {loading ? <Loading /> :
+                token !== undefined ?
+                <>
+                  <Header users={user}/>
+                  <Content />
+                  <Footer />
+                </>
 
-                {token === undefined &&
-                  <AuthRequired />
-                }
+                :
+
+                <AuthRequired />
+              }
             </div>
         </>
     )
