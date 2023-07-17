@@ -9,7 +9,7 @@ const Logout = () => {
 
     useEffect(function(){
         async function getLogout(){
-            const url = "http://localhost:8000/api/user/logout"
+            const url = "http://127.0.0.1:8000/api/auth/logout"
             const request = await fetch(url, {
                 method : "POST",
                 headers : {
