@@ -17,7 +17,7 @@ const Content = () => {
       formData.append(key, value);
     }
 
-    const url = "http://localhost:8000/api/user/register";
+    const url = "http://127.0.0.1:8000/api/auth/register";
     const request = await fetch(url, {
       method: "POST",
       headers: {
@@ -57,14 +57,14 @@ const Content = () => {
             <div className={css.input_username}>
               <input
                 type="text"
-                name="name"
-                placeholder="Nama"
+                name="username"
+                placeholder="Username"
                 autoComplete="off"
                 required
-                className={error.name && css.error_input}
+                className={error.username && css.error_input}
               />
-              {error.name && (
-                <div className={css.error_message}>{error.name}</div>
+              {error.username && (
+                <div className={css.error_message}>{error.username}</div>
               )}
             </div>
             <div className={css.input_email}>
