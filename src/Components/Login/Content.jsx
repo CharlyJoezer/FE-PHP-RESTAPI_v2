@@ -18,7 +18,7 @@ const Content = () => {
       formData.append(key, value);
     }
 
-    const url = "http://localhost:8000/api/user/auth";
+    const url = "http://127.0.0.1:8000/api/auth/login";
     const request = await fetch(url, {
       method: "POST",
       headers: {
@@ -28,8 +28,8 @@ const Content = () => {
     });
     const response = await request.json();
 
-    if (request.status === 200) {
-      const token = response.data.token;
+    if (request.status === 201) {
+      const token = response.token;
       setCookie("itemku_token", token, 60);
       navigate("/");
       document.body.style.overflow = "auto";
@@ -43,7 +43,7 @@ const Content = () => {
 
     if (request.status === 404) {
       setLoading(false);
-      setError({ message: response.message });
+      setError({ message: response.errors });
       document.body.style.overflow = "auto";
     }
   }
