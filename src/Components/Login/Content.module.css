@@ -10,7 +10,7 @@
 }
 .text_header {
   text-align: center;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
@@ -26,10 +26,12 @@
   color:red;
   background-color: rgba(255, 0, 0, 0.769);
   color: white;
-  padding: 15px 10px;
+  padding: 12px 8px;
   box-sizing: border-box;
   font-weight: 500;
   border-radius: 5px;
+  width: 50%;
+  margin: 0 auto;
 }
 .header_image img {
   width: 150px;
@@ -114,6 +116,9 @@
 @media (max-width: 520px){
   .text_header img {
     width: 200px;
+  }
+  .error_notvalid{
+    width: 290px;
   }
   .input_email input,
   .input_password input {
