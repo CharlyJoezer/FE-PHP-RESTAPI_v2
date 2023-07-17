@@ -11,18 +11,14 @@ const DetailProduk = () => {
 
   useEffect(function(){
     async function getProductData(){
-      const formData = new URLSearchParams();
-      for (const [key, value] of Object.entries(params)) {
-        formData.append(key, value);
-      }
 
       const url = 'http://localhost:8000/api/product/find'
       const request = await fetch(url,{
         method : 'POST',
-        header : {
-          'Content-type' : 'application/x-www-form-urlencoded'
+        headers : {
+          'Content-Type' : 'application/x-www-form-urlencoded'
         },
-        body : formData.toString()
+        body : new URLSearchParams(params).toString()
       })
       
       const response = await request.json()
