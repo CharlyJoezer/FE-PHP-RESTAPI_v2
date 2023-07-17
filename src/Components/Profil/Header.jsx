@@ -13,7 +13,7 @@ const Header = (props) => {
           <div className={css.profil_user}>
             <img className={css.profil_image} src="assets/icon/profil.png" alt="" />
             <div className={css.profil_desc}>
-              <div className={css.profil_name}>{props.users.name}</div>
+              <div className={css.profil_name}>{props.users.username}</div>
               <div className={css.profil_email}>{props.users.email}</div>
               <div className={css.profil_wallet}>
                 <img src="assets/icon/wallet.png" alt="" />
