@@ -5,6 +5,7 @@ import Register from "./Pages/Register/Register.jsx";
 import Profil from "./Pages/Profil/Profil.jsx";
 import Logout from "./Components/Logout/Logout.jsx";
 import DetailProduk from "./Pages/DetailProduct/DetailProduct.jsx";
+import CreateShop from "./Pages/Shop/CreateShop.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/profil" element={<Profil />} />
           <Route path="/auth/logout" element={<Logout />} />
           <Route path="/product/:id" element={<DetailProduk />} />
+          <Route path="/shop/create" element={<CreateShop />} />
         </Routes>
       </Router>
     </>
