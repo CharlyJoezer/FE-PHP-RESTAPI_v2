@@ -13,6 +13,7 @@ const Profil = () => {
     const token = Cookie(' itemku_token')
     const [user, setDataUser] = useState([])
     const [loading, setLoading] = useState(true)
+    const [auth, setAuth] = useState(false)
 
     useEffect(function(){
       if(token === undefined){
@@ -29,8 +30,12 @@ const Profil = () => {
   
           const response = await request.json()
   
-          if(request.ok){
+          if(request.status === 200){
+            setAuth(true)
             setDataUser(response.data)
+            setLoading(false)
+          }else{
+            setAuth(false)
             setLoading(false)
           }
         }
@@ -42,7 +47,7 @@ const Profil = () => {
             <Navbar users={user}/>
             <div className={css.container_profil}>
               {loading ? <Loading /> :
-                token !== undefined ?
+                auth ?
                 <>
                   <Header users={user}/>
                   <Content />
