@@ -11,7 +11,7 @@ body{
     border-left: 1px solid #eee;
     border-right: 1px solid #eee;
     background-color: white;
-
+    position: relative;
 }
 @media (max-width: 700px) {
     #root {
