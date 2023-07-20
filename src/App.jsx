@@ -6,6 +6,7 @@ import Profil from "./Pages/Profil/Profil.jsx";
 import Logout from "./Components/Logout/Logout.jsx";
 import DetailProduk from "./Pages/DetailProduct/DetailProduct.jsx";
 import CreateShop from "./Pages/Shop/CreateShop.jsx";
+import {Beranda as Dashboard} from "./Pages/Shop/Dashboard/Beranda/Beranda.jsx";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/auth/logout" element={<Logout />} />
           <Route path="/product/:id" element={<DetailProduk />} />
           <Route path="/shop/create" element={<CreateShop />} />
+          <Route path="/shop/dashboard/beranda" element={<Dashboard />} />
         </Routes>
       </Router>
     </>
