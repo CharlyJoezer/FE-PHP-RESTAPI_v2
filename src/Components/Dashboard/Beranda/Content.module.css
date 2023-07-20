@@ -1,0 +1,172 @@
+.container_content_beranda{
+    padding: 0px 10px;
+    background-color: #fafafa;
+    height: 100vh;
+    padding-bottom: 200px;
+}
+.main_image{
+    padding: 10px 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.main_image img{
+    width: 120px;
+    padding-top: 5px;
+}
+.shop_profil{
+    margin-bottom: 15px;
+}
+.shop_profil_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 1px #eee;
+}
+.shop_about{
+    display: flex;
+    align-items: center;
+}
+.shop_about img{
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+}
+.shop_about_data{
+    padding-left: 8px;
+    line-height: 1;
+}
+.shop_about_name{
+    font-size: 15px;
+    font-weight: 500;
+}
+.shop_about_status{
+    font-size: 11px;
+}
+.btn_shop_detail{
+    padding: 8px 13px;
+    background-color: #307FE2;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+}
+.btn_shop_detail:hover{
+    background-color: #0066e4;
+}
+.shop_activity{
+    margin-bottom: 15px;
+}
+.shop_activity_title, .shop_title, .shop_balance_title, .shop_statistic_title div{
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 5px;
+}
+.list_activity{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+.box_activity{
+    padding: 10px 12px;
+    box-shadow: 0 0 2px #eee;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.box_activity_title{
+    color: #888;
+    font-size: 14px;
+}
+.box_activity_info {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+}
+.box_activity_info svg{
+    width: 25px;
+    height: 25px;
+}
+.box_activity_info .box_activity_info_count{
+    padding-left: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+.shop_balance{
+    margin-bottom: 15px;
+}
+.shop_balance_info{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 10px;
+}
+.transaction_success_box, .transaction_process_box{
+    padding: 10px 12px;
+    box-shadow: 0 0 2px #eee;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.transaction_title{
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+.transaction_info{
+    display: flex;
+    align-items: center;
+}
+.transaction_info svg{
+    width: 25px;
+}
+.transaction_balance_amount{
+    font-size: 18px;
+    padding-left: 5px;
+    font-weight: bold;
+    color: #333;
+}
+.shop_statistic_title{
+    line-height: 0.9;
+    margin-bottom: 10px;
+}
+.shop_statistic_title span{
+    font-size: 12px;
+    color: #aaa;
+}
+.shop_statistic_list{
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    padding: 10px 12px;
+    gap: 10px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+.shop_statistic_item_title{
+    font-size: 14px;
+    color: #888;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+}
+.shop_statistic_item_info{
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+}
+.shop_statistic_item_info svg{
+    width: 25px;
+}
+.amount{
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 5px;
+}
