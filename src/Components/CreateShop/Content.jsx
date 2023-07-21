@@ -40,6 +40,8 @@ const Content = () => {
                 document.getElementById('name_shop').value = ''
                 setError(response.errors)
                 setLoading(false)
+            }else if(request.status === 409){
+                navigate('/shop/dashboard/beranda')
             }
         }
 
