@@ -8,6 +8,7 @@ import DetailProduk from "./Pages/DetailProduct/DetailProduct.jsx";
 import CreateShop from "./Pages/Shop/CreateShop.jsx";
 import {Beranda as DashboardBeranda} from "./Pages/Shop/Dashboard/Beranda/Beranda.jsx";
 import {Pesanan as DashboardPesanan} from "./Pages/Shop/Dashboard/Pesanan/Pesanan.jsx";
+import {BuatProduk as DashboardBuatProduk} from "./Pages/Shop/Dashboard/BuatProduk/BuatProduk.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/shop/create" element={<CreateShop />} />
           <Route path="/shop/dashboard/beranda" element={<DashboardBeranda />} />
           <Route path="/shop/dashboard/pesanan" element={<DashboardPesanan />} />
+          <Route path="/shop/dashboard/buat-produk" element={<DashboardBuatProduk />} />
         </Routes>
       </Router>
     </>
