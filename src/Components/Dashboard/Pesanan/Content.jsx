@@ -4,11 +4,7 @@ const Content = () => {
     return (
         <>
             <div className={css.container_content}>
-                <div className={css.main_text}>
-                    <img src="https://tokoku.itemku.com/static/icon/tokoku-color.png?v=1.27.0" alt="itemku_tokoku" />
-                    <span>Pesanan</span>
-                </div>
-
+                
                 <div className={css.list_order_status}>
                     <div className={css.order_status_item}>
                         <span>Perlu diproses</span>

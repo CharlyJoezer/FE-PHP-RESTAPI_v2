@@ -31,13 +31,7 @@ const Content = () => {
   return (
     <>
       <div className={css.container_content}>
-        <div className={css.main_text}>
-          <img
-            src="https://tokoku.itemku.com/static/icon/tokoku-color.png?v=1.27.0"
-            alt="itemku_tokoku"
-          />
-          <span>Buat Produk</span>
-        </div>
+        
         <form onSubmit={(event) => {
           event.preventDefault()
           const data = Object.fromEntries(new FormData(event.target).entries())
