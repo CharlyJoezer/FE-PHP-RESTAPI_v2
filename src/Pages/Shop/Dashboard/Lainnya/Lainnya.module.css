@@ -1,0 +1,23 @@
+.list_link{
+    display: flex;
+    flex-direction: column;
+}
+.link_item{
+    padding: 15px 12px;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.link_item:hover {
+    background-color: #eee;
+    transition: 0.2s; 
+}
+.link_item svg{
+    width: 20px;
+}
