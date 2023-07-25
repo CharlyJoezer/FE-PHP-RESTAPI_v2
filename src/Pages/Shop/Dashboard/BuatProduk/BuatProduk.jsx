@@ -7,7 +7,7 @@ export const BuatProduk = () => {
     return (
         <>
             <div className={css.container_buat_produk}>
-                <HeaderDashboard />
+                <HeaderDashboard text="Buat Produk"/>
                 <Content />
                 <NavbarDashboard />
             </div>
