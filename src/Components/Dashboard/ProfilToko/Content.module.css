@@ -1,0 +1,63 @@
+.container_content{
+    padding: 10px 15px;
+}
+.box_profil{
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 3px #aaa;
+    border-radius: 8px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.wrapper_image_shop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.wrapper_image_shop .image_shop{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid #eee;
+    object-fit: cover;
+}
+.wrapper_image_shop svg{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 50%;
+}
+.biodata_shop{
+    padding-left: 18px;
+}
+.biodata_shop .name_shop{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+.status_shop{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.save_edit_btn{
+    background-color: #307FE2;
+    border-radius: 4px;
+    border: none;
+    padding: 10px 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+}
+.form_image_shop input {
+    position: absolute;
+    z-index: -1;
+    width: 0px;
+    height: 0px;
+}
