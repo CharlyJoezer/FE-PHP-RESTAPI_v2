@@ -1,0 +1,84 @@
+.container_content {
+  padding: 13px 15px;
+}
+.rating_toko_text {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+.rate_shop_info {
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  justify-content: space-around;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.average_star {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.average_star img {
+  width: 50px;
+  margin-bottom: 8px;
+}
+.average_star div {
+  font-size: 20px;
+  font-weight: bold;
+}
+.star_5,
+.star_4,
+.star_3,
+.star_2,
+.star_1 {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+.all_star_rating img {
+  width: 18px;
+  margin-right: 8px;
+}
+.list_rating {
+  display: flex;
+  flex-direction: column;
+}
+.rating_item {
+  margin-bottom: 15px;
+  box-shadow: 0 0 3px #ccc;
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+}
+.username_and_date {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.username_and_date .name {
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.username_and_date .date {
+  font-size: 12px;
+  color: #555;
+}
+.stars_rating img {
+  width: 18px;
+  margin-right: 5px;
+}
+.product_and_category {
+  font-size: 12px;
+}
+.name_product {
+  font-weight: bold;
+  color: #333;
+}
+.category {
+  font-weight: bold;
+  color: #333;
+}

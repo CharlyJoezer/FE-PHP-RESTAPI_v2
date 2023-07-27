@@ -11,6 +11,7 @@ import {Pesanan as DashboardPesanan} from "./Pages/Shop/Dashboard/Pesanan/Pesana
 import {BuatProduk as DashboardBuatProduk} from "./Pages/Shop/Dashboard/BuatProduk/BuatProduk.jsx";
 import {Lainnya as DashboardLainnya} from "./Pages/Shop/Dashboard/Lainnya/Lainnya.jsx";
 import {ProfilToko as DashboardProfilToko} from "./Pages/Shop/Dashboard/ProfilToko/ProfilToko.jsx";
+import {UlasanPembeli as DashboardUlasanPembeli} from "./Pages/Shop/Dashboard/UlasanPembeli/UlasanPembeli.jsx";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/shop/dashboard/buat-produk" element={<DashboardBuatProduk />} />
           <Route path="/shop/dashboard/lainnya" element={<DashboardLainnya />} />
           <Route path="/shop/dashboard/profil-toko" element={<DashboardProfilToko />} />
+          <Route path="/shop/dashboard/ulasan-pembeli" element={<DashboardUlasanPembeli />} />
         </Routes>
       </Router>
     </>
