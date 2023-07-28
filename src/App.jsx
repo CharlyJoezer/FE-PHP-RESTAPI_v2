@@ -12,6 +12,7 @@ import {BuatProduk as DashboardBuatProduk} from "./Pages/Shop/Dashboard/BuatProd
 import {Lainnya as DashboardLainnya} from "./Pages/Shop/Dashboard/Lainnya/Lainnya.jsx";
 import {ProfilToko as DashboardProfilToko} from "./Pages/Shop/Dashboard/ProfilToko/ProfilToko.jsx";
 import {UlasanPembeli as DashboardUlasanPembeli} from "./Pages/Shop/Dashboard/UlasanPembeli/UlasanPembeli.jsx";
+import {PengaturanToko as DashboardPengaturanToko} from "./Pages/Shop/Dashboard/PengaturanToko/PengaturanToko.jsx";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/shop/dashboard/lainnya" element={<DashboardLainnya />} />
           <Route path="/shop/dashboard/profil-toko" element={<DashboardProfilToko />} />
           <Route path="/shop/dashboard/ulasan-pembeli" element={<DashboardUlasanPembeli />} />
+          <Route path="/shop/dashboard/pengaturan-toko" element={<DashboardPengaturanToko />} />
         </Routes>
       </Router>
     </>
