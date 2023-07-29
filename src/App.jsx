@@ -13,6 +13,7 @@ import {Lainnya as DashboardLainnya} from "./Pages/Shop/Dashboard/Lainnya/Lainny
 import {ProfilToko as DashboardProfilToko} from "./Pages/Shop/Dashboard/ProfilToko/ProfilToko.jsx";
 import {UlasanPembeli as DashboardUlasanPembeli} from "./Pages/Shop/Dashboard/UlasanPembeli/UlasanPembeli.jsx";
 import {PengaturanToko as DashboardPengaturanToko} from "./Pages/Shop/Dashboard/PengaturanToko/PengaturanToko.jsx";
+import {ProdukToko as DashboardProdukToko} from "./Pages/Shop/Dashboard/ProdukToko/ProdukToko.jsx";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/shop/dashboard/profil-toko" element={<DashboardProfilToko />} />
           <Route path="/shop/dashboard/ulasan-pembeli" element={<DashboardUlasanPembeli />} />
           <Route path="/shop/dashboard/pengaturan-toko" element={<DashboardPengaturanToko />} />
+          <Route path="/shop/dashboard/produk-toko" element={<DashboardProdukToko />} />
         </Routes>
       </Router>
     </>
