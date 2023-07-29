@@ -1,10 +1,12 @@
 import css from "./Content.module.css";
 import { Link } from "react-router-dom";
 import { Modal_Edit } from "./Modal_Edit";
+import { Modal_More } from "./Modal_More";
 import { useState } from "react";
 
 const Content = () => {
   const [modalEdit, setModalEdit] = useState([]);
+  const [modalMore, setModalMore] = useState([]);
   return (
     <>
       <div className={css.container_content}>
@@ -25,6 +27,9 @@ const Content = () => {
             <div className={css.name_product_and_btn}>
               <span className={css.product_name}>Diamond Lock</span>
               <svg
+                onClick={() => [
+                  setModalMore({ show: true, data: { id_product: "test" } }),
+                ]}
                 className={css.btn_more}
                 viewBox="0 0 24 24"
                 fill="none"
@@ -61,7 +66,12 @@ const Content = () => {
               onClick={() => {
                 setModalEdit({
                   show: true,
-                  data: { name: "Diamond Lock", category:'Growtopia', price: "5000", stock  : 1},
+                  data: {
+                    name: "Diamond Lock",
+                    category: "Growtopia",
+                    price: "5000",
+                    stock: 1,
+                  },
                 });
               }}
             >
@@ -71,12 +81,22 @@ const Content = () => {
         </div>
         {modalEdit.show && (
           <div
-            className="wrapper_container_modal"
+            className={css.wrapper_container_modal_edit}
             onClick={() => {
               setModalEdit({ show: false, data: {} });
             }}
           >
             <Modal_Edit data={modalEdit.data} />
+          </div>
+        )}
+        {modalMore.show && (
+          <div
+            className={css.wrapper_container_modal_more}
+            onClick={() => {
+              setModalMore({ show: false, data: {} });
+            }}
+          >
+            <Modal_More data={modalMore.data} />
           </div>
         )}
       </div>
