@@ -25,7 +25,7 @@ export const Modal_More = () => {
           <div className={css.header_text}>Pengaturan Produk</div>
           <div className={css.list_setting}>
             <Link
-              to="/shop/dashboard/produk/edit"
+              to="/shop/dashboard/produk/edit/id_test"
               className={css.link_edit_detail_product}
             >
               Edit Detail Prouk
