@@ -1,10 +1,10 @@
 import css from "./Modal_Edit.module.css";
 import { useState } from "react";
 import { toRupiah } from "../../../Utils/toRupiahFormat";
+import Counter from "../../Counter"
 
 export const Modal_Edit = (props) => {
   const { data } = props;
-  const [counter, setCounter] = useState(data.stock);
   const [price, setPrice] = useState(data.price);
   return (
     <>
@@ -49,59 +49,7 @@ export const Modal_Edit = (props) => {
           </div>
           <div className={css.wrapper_input_stock}>
             <span>Stock Produk</span>
-            <div className={css.counter_stock}>
-              <img
-                className={css.counter_number_min}
-                src="/assets/icon/minus.png"
-                alt="minus"
-                style={{
-                  opacity: counter === 0 && "0.3",
-                }}
-                onClick={() => {
-                  const getValue = counter - 1;
-                  if (getValue < 0) {
-                    return false;
-                  }
-                  setCounter(getValue);
-                }}
-              />
-              <div className={css.counter_number}>
-                <input
-                  type="number"
-                  name="edit_stock"
-                  value={counter}
-                  onChange={(event) => {
-                    if (event.target.value[0] === "0") {
-                      event.target.value = event.target.value.slice(1);
-                    }
-                    const getValue = event.target.value.toString();
-                    setCounter(parseInt(getValue));
-                  }}
-                  onKeyUp={(event) => {
-                    const getValue =
-                      event.target.value === ""
-                        ? 0
-                        : parseInt(event.target.value.replace(/\D/g, ""));
-                    if (getValue >= 10000) {
-                      setCounter(9999);
-                    } else {
-                      setCounter(getValue);
-                    }
-                  }}
-                />
-              </div>
-              <img
-                className={css.counter_number_plus}
-                src="/assets/icon/plus.png"
-                alt="plus"
-                onClick={() => {
-                  const getValue = counter + 1;
-                  if (getValue < 10000) {
-                    setCounter(getValue);
-                  }
-                }}
-              />
-            </div>
+            <Counter inputName="edit_produk" number={data.stock} />
           </div>
           <button className={css.btn_confirm} type="submit">
             Simpan Perubahan
