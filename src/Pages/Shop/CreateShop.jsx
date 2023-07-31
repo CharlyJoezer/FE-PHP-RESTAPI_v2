@@ -6,6 +6,7 @@ import AuthRequired from "../../Components/AuthRequired/AuthRequired"
 import { useEffect, useState } from "react";
 import Loading from "../../Components/Loading/Loading"
 import { useNavigate } from "react-router-dom";
+import BASEURL from "../../Utils/baseURL"
 
 const CreateShop = () => {
   const [auth, setAuth] = useState(false)
@@ -15,7 +16,7 @@ const CreateShop = () => {
   useEffect(function(){
     async function checkAuth(){
       const token = Cookie(' itemku_token')
-      const url = "http://127.0.0.1:8000/api/auth/get-user-data"
+      const url = BASEURL()+"/api/auth/get-user-data"
       const request = await fetch(url, {
         method : 'GET',
         headers : {

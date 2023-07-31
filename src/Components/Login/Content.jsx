@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import css from "../Login/Content.module.css";
 import Loading from "../Loading/Loading";
+import BASEURL from "../../Utils/baseURL"
 
 const Content = () => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ const Content = () => {
       formData.append(key, value);
     }
 
-    const url = "http://127.0.0.1:8000/api/auth/login";
+    const url = BASEURL()+"/api/auth/login";
     const request = await fetch(url, {
       method: "POST",
       headers: {

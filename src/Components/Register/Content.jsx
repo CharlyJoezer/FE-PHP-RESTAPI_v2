@@ -2,6 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import css from "../Register/Content.module.css";
 import { useState } from "react";
 import Loading from "../Loading/Loading";
+import BASEURL from "../../Utils/baseURL"
 
 const Content = () => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ const Content = () => {
       formData.append(key, value);
     }
 
-    const url = "http://127.0.0.1:8000/api/auth/register";
+    const url = BASEURL()+"/api/auth/register";
     const request = await fetch(url, {
       method: "POST",
       headers: {

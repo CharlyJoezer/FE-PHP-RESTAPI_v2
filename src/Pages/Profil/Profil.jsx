@@ -7,6 +7,7 @@ import Content from "../../Components/Profil/Content"
 import Footer from "../../Components/Profil/Footer"
 import AuthRequired from "../../Components/AuthRequired/AuthRequired.jsx"
 import Loading from "../../Components/Loading/Loading"
+import BASEURL from "../../Utils/baseURL"
 
 const Profil = () => {
     document.title = 'Profil'
@@ -20,7 +21,7 @@ const Profil = () => {
         setLoading(false)
       }else{
         async function getUserData(token){
-          const url = "http://127.0.0.1:8000/api/auth/get-user-data"
+          const url = BASEURL()+"/api/auth/get-user-data"
           const request = await fetch(url,{
             method : 'GET',
             headers : {

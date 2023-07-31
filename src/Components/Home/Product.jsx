@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import css from "../Home/Product.module.css"
 import {Link} from "react-router-dom"
+import BASEURL from "../../Utils/baseURL"
 
 
 const Product = () => {
@@ -11,7 +12,7 @@ const Product = () => {
       function () {
         async function getProduct() {
           const request = await fetch(
-            "http://localhost:8000/api/product/get"
+            BASEURL()+"/api/product/get"
           );
   
           const response = await request.json();

@@ -3,6 +3,7 @@ import css from "./Content.module.css"
 import Loading from "../../Components/Loading/Loading"
 import {Cookie} from "../../Auth/Cookies"
 import { useNavigate } from "react-router-dom"
+import BASEURL from "../../Utils/baseURL"
 
 const Content = () => {
     const [errors, setError] = useState([])
@@ -21,7 +22,7 @@ const Content = () => {
 
         async function sendRequest(){
             const token = Cookie(' itemku_token')
-            const url = "http://127.0.0.1:8000/api/shop/create"
+            const url = BASEURL()+"/api/shop/create"
             const request = await fetch(url,{
                 method : 'POST',
                 headers : {
