@@ -53,6 +53,7 @@
     cursor: pointer;
     transition: 0.3s;
     font-size: 13px;
+    text-decoration: none;
 }
 .btn_shop_detail:hover{
     background-color: #0066e4;

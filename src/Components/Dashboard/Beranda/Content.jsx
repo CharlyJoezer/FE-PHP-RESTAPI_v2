@@ -1,4 +1,5 @@
 import css from "./Content.module.css"
+import {Link} from "react-router-dom"
 
 const Content = (props) => {
     const data = props.data.data
@@ -19,7 +20,7 @@ const Content = (props) => {
                             </div>
                         </div>
                         
-                        <div className={css.btn_shop_detail}>Detail Toko</div>
+                        <Link className={css.btn_shop_detail}>Detail Toko</Link>
                     </div>
                 </div>
 
