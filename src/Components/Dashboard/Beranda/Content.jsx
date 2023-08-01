@@ -20,7 +20,7 @@ const Content = (props) => {
                             </div>
                         </div>
                         
-                        <Link className={css.btn_shop_detail}>Detail Toko</Link>
+                        <Link to="/shop/dashboard/profil-toko" className={css.btn_shop_detail}>Detail Toko</Link>
                     </div>
                 </div>
 
