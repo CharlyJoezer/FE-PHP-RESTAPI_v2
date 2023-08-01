@@ -5,7 +5,6 @@ import Loading from "../../../../Components/Loading/Loading"
 import { useEffect, useState } from "react"
 import BASEURL from "../../../../Utils/baseURL"
 import {Cookie} from "../../../../Auth/Cookies"
-// import AuthRequired from "../../../../Components/AuthRequired"
 import { useNavigate } from "react-router-dom"
 
 export const Beranda = () => {
