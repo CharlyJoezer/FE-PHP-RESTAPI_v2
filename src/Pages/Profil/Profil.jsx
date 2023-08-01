@@ -21,7 +21,7 @@ const Profil = () => {
         setLoading(false)
       }else{
         async function getUserData(token){
-          const url = BASEURL()+"/api/auth/get-user-data"
+          const url = BASEURL()+"/api/auth/user-data"
           const request = await fetch(url,{
             method : 'GET',
             headers : {
