@@ -57,16 +57,21 @@ export const Beranda = () => {
   }, []);
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : error.show === true ? (
-        <ErrorPage code={error.code} />
-      ) : (
-        <div className={css.container_dashboard_shop}>
-          <Content data={data} />
+
+        <div className={css.container_dashboard}>
+          {loading
+          ?
+            <Loading />
+          :
+            error.show === true
+            ?
+            <ErrorPage code={error.code}/>
+            :
+            <Content data={data} />
+          }
+
           <Navbar_Dashboard />
         </div>
-      )}
     </>
   );
 };
