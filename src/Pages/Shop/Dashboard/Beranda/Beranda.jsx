@@ -6,10 +6,15 @@ import { useEffect, useState } from "react"
 import BASEURL from "../../../../Utils/baseURL"
 import {Cookie} from "../../../../Auth/Cookies"
 import { useNavigate } from "react-router-dom"
+import ErrorPage from "../../../Errors/ErrorPage.jsx"
 
 export const Beranda = () => {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([]);
+    const [error = {
+        show : false,
+        code : null
+    }, setError] = useState([]);
     const token = Cookie(' itemku_token')
     const navigate = useNavigate()
 
@@ -17,8 +22,8 @@ export const Beranda = () => {
         if(token === undefined){
             navigate('/login')
         }else{
-            try{
-                async function sendRequest(){
+            async function sendRequest(){
+                try{
                     const url = BASEURL()+"/api/shop/dashboard/home"
                     const request = await fetch(url,{
                         method : 'GET',
@@ -26,16 +31,23 @@ export const Beranda = () => {
                             'Authorization' : token
                         }
                     })
-    
-                    const response = await request.json()
-                    setLoading(false)
-                    setData(response)
-                }
-                sendRequest()
-    
-            }catch(Exception){
-                console.error('sdasdas')
+
+                    if(request.status === 200){
+                        const response = await request.json()
+                        setLoading(false)
+                        setData(response)
+                    }else if(request.status === 403){
+                        throw new Error('403')
+                    }else if(request.status === 404){
+                        throw new Error('404')
+                    }
+
+                    }catch(error){
+                        setLoading(false)
+                        setError({show : true, code : isNaN(error.message) ? '500' : error.message})
+                    }
             }
+            sendRequest()
         }
     }, [])
     return (
@@ -44,10 +56,14 @@ export const Beranda = () => {
         ?
             <Loading />
         :
-            <div className={css.container_dashboard_shop}>
-                <Content data={data}/>
-                <Navbar_Dashboard />
-            </div>
+            error.show === true
+            ?
+                <ErrorPage code={error.code} />
+            :
+                <div className={css.container_dashboard_shop}>
+                    <Content data={data}/>
+                    <Navbar_Dashboard />
+                </div>
         }
         </> 
     )
