@@ -43,6 +43,8 @@ export const Beranda = () => {
             throw new Error("403");
           } else if (request.status === 404) {
             throw new Error("404");
+          }else{
+            throw new Error("500")
           }
         } catch (error) {
           setLoading(false);
