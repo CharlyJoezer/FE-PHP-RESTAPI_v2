@@ -224,7 +224,21 @@
     color: white;
     border: 1px solid red;
 }
-
+.data_not_found{
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.data_not_found img {
+    margin-bottom: 15px;
+    opacity: 0.7;
+    width: auto;
+}
+.data_not_found span {
+    color: #888;
+}
 
 @media (max-width: 426px){
     .order_status_item svg{
