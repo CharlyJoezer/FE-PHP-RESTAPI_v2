@@ -1,35 +1,51 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {Cookie} from "../../Auth/Cookies.js"
 import {deleteCookies} from "../../Auth/deleteCookies.js"
 import { useNavigate } from "react-router-dom";
+import ErrorPage from "../../Pages/Errors/ErrorPage.jsx";
 
 const Logout = () => {
     const token = Cookie(' itemku_token')
     const navigate = useNavigate()
+    const [errorRequest = {
+        show : false,
+        code : null
+    } , setErrorRequest] = useState([])
 
     useEffect(function(){
         async function getLogout(){
-            const url = "http://127.0.0.1:8000/api/auth/logout"
-            const request = await fetch(url, {
-                method : "POST",
-                headers : {
-                    Authorization : token
+            try{
+                const url = "http://127.0.0.1:8000/api/auth/logout"
+                const request = await fetch(url, {
+                    method : "POST",
+                    headers : {
+                        Authorization : token
+                    }
+                })
+
+                if(request.status === 200){
+                    deleteCookies('itemku_token')
+                    navigate('/')
+                }else if(request.status === 403){
+                    setErrorRequest({show : true, code : "403"})
+                }else{
+                    throw new Error('500')
                 }
-            })
-
-            const response = request.json()
-
-            if(request.ok){
-                deleteCookies('itemku_token')
-                return navigate('/')
-            }else{
-                return navigate('/login')
+            }catch(error){
+                setErrorRequest({show : true, code : isNaN(error.message) ? "500" : error.message})
             }
         }
 
         getLogout()
     }, [])
 
+    return (
+        <>
+            {errorRequest.show && 
+                <ErrorPage code={errorRequest.code} />
+            }
+        </>
+    )
 }
 
 export default Logout;
