@@ -40,7 +40,7 @@ export const Beranda = () => {
             setLoading(false);
             setData(response);
           } else if (request.status === 403) {
-            throw new Error("403");
+            navigate('/login')
           } else if (request.status === 404) {
             throw new Error("404");
           }else{
