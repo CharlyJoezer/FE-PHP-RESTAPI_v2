@@ -37,6 +37,8 @@ const Content = () => {
                     throw new Error("404")
                 }else if(request.status === 403){
                     navigate('/login')
+                }else if(request.status === 500){
+                    throw new Error("500")
                 }else{
                     const response = await request.json()
                     setLoading(false)
