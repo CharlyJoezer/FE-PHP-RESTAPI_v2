@@ -7,33 +7,45 @@ import { useEffect, useState } from "react";
 import Loading from "../../Components/Loading/Loading"
 import { useNavigate } from "react-router-dom";
 import BASEURL from "../../Utils/baseURL"
+import ErrorPage from "../../Pages/Errors/ErrorPage"
 
 const CreateShop = () => {
   const [auth, setAuth] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [errorRequest, setErrorRequest] = useState([])
   const navigate = useNavigate()
 
   useEffect(function(){
     async function checkAuth(){
-      const token = Cookie(' itemku_token')
-      const url = BASEURL()+"/api/auth/user-data"
-      const request = await fetch(url, {
-        method : 'GET',
-        headers : {
-          'Authorization' : token
-        }
-      })
-      const response = await request.json()
-  
-      if(request.status === 200){
-        setAuth(true)
-          if(response.data.shops !== null){
-            navigate('/shop/dashboard/beranda')
+      try{
+        const token = Cookie(' itemku_token')
+        const url = BASEURL()+"/api/auth/user-data"
+        const request = await fetch(url, {
+          method : 'GET',
+          headers : {
+            'Authorization' : token
           }
+        })
+        const response = await request.json()
+    
+        if(request.status === 200){
+          setAuth(true)
+            if(response.data.shops !== null){
+              navigate('/shop/dashboard/beranda')
+            }
+          setLoading(false)
+        }else if(request.status === 403){
+          setAuth(false)
+          setLoading(false)
+        }else if(request.status === 404){
+          setAuth(false)
+          setLoading(false)
+        }else{
+          throw new Error('500');
+        }
+      }catch(error){
         setLoading(false)
-      }else{
-        setAuth(false)
-        setLoading(false)
+        setErrorRequest({show : true, code : isNaN(error.message) ? "500" : error.message})
       }
     }
     checkAuth()
@@ -43,13 +55,16 @@ const CreateShop = () => {
     <>
       {loading ? <Loading />
       :
-        auth ? 
-          <div className={css.container_create_shop}>
-            <Header />
-            <Content />
-          </div>
+        errorRequest.show ? 
+          <ErrorPage code={errorRequest.code}/>
         :
-          <AuthRequired />
+          auth ? 
+            <div className={css.container_create_shop}>
+              <Header />
+              <Content />
+            </div>
+          :
+            <AuthRequired />
       }
     </>
   );
