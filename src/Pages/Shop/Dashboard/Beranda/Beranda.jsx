@@ -42,7 +42,7 @@ export const Beranda = () => {
           } else if (request.status === 403) {
             navigate('/login')
           } else if (request.status === 404) {
-            throw new Error("404");
+            navigate('/shop/create')
           }else{
             throw new Error("500")
           }
