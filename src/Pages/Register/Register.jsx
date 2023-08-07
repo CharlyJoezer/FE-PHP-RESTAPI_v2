@@ -18,7 +18,7 @@ const Register = () => {
 
   return (
     <>
-      {getToken !== undefined &&
+      {getToken === undefined &&
         <div className={css.container_register}>
           <Header />
           <Content />

@@ -18,7 +18,7 @@ const Login = () => {
 
   return (
     <>
-      {getToken !== undefined &&
+      {getToken === undefined &&
       <div className={css.container_login}>
         <Header />
         <Content />
