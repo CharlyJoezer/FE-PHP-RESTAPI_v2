@@ -1,6 +1,8 @@
 import css from "./Content.module.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toRupiah } from "../../../Utils/toRupiahFormat";
+import BASEURL from "../../../Utils/baseURL"
+import ErrorPage from "../../../Pages/Errors/ErrorPage"
 
 const Content = () => {
   const inputCategory = useRef(null);
@@ -9,9 +11,16 @@ const Content = () => {
   const btnType = useRef(null);
 
   const [showListCategory, setListCategory] = useState(false);
+  const [dataCategory, setDataCategory] = useState([]);
+  const [searchCategory, setSearchCategory] = useState([])
   const [showType, setType] = useState(false);
   const [categoryStatus, setCategoryStatus] = useState(false);
   const [typeStatus, setTypeStatus] = useState(false);
+  const [dataTypeCategory, setDataTypeCategory] = useState([])
+  const [errorRequest = {
+    show : false,
+    code : null
+  }, setErrorRequest] = useState([])
 
   function handlePickCategory(event) {
     const category = event.target.getAttribute("aria-label");
@@ -28,8 +37,38 @@ const Content = () => {
     setTypeStatus(true);
   }
 
+  useEffect(function(){
+    async function sendRequestCategory(){
+      try{
+        const url = BASEURL()+"/api/sub-categories"
+        const request = await fetch(url,{
+          method : 'GET'
+          
+        })
+
+        if(request.status === 200){
+          const response = await request.json()
+          const filterNameCategory = response.data.map(category => {
+            return category.name;
+          })
+          setSearchCategory(filterNameCategory)
+          setDataCategory(filterNameCategory)
+        }else if(request.status === 500){
+          throw new Error("500")
+        }
+        
+      }catch(error){
+        setErrorRequest({show : true, code : isNaN(error.message) ? "500" : error.message})
+      }
+    }
+    sendRequestCategory()
+  }, [])
+
   return (
     <>
+      {errorRequest.show ? 
+        <ErrorPage code={errorRequest.code} />
+        :
       <div className={css.container_content}>
         
         <form onSubmit={(event) => {
@@ -47,6 +86,7 @@ const Content = () => {
                 type="text"
                 name="category_product"
                 placeholder="Pilih Kategori"
+                autoComplete="off"
                 onClick={(event) => {
                   const label = event.currentTarget.getAttribute("aria-label");
                   const element = btnCategory.current;
@@ -66,6 +106,13 @@ const Content = () => {
                 onChange={() => {
                   setCategoryStatus(false);
                   setTypeStatus(false);
+                }}
+                onKeyUp={(e) => {
+                  const searchKeyword = e.target.value
+
+                  const pattern = new RegExp(searchKeyword, 'i')
+                  const filterCategory = dataCategory.filter(category => pattern.test(category))
+                  setSearchCategory(filterCategory)
                 }}
                 style={{
                   border: showListCategory && "1px solid #307FE2",
@@ -107,20 +154,18 @@ const Content = () => {
             </div>
             {showListCategory && (
               <div className={css.list_input_category}>
-                <div
-                  className={css.list_item_category}
-                  onClick={handlePickCategory}
-                  aria-label="Growtopia"
-                >
-                  Growtopia
-                </div>
-                <div
-                  className={css.list_item_category}
-                  onClick={handlePickCategory}
-                  aria-label="Free Fire"
-                >
-                  Free Fire
-                </div>
+                {searchCategory.map(function(item){
+                  return (
+                    <div
+                      className={css.list_item_category}
+                      onClick={handlePickCategory}
+                      aria-label={item}
+                      key={item}
+                    >
+                      {item}
+                    </div>
+                  )
+                })}
               </div>
             )}
 
@@ -321,6 +366,7 @@ const Content = () => {
           )}
         </form>
       </div>
+      }
     </>
   );
 };
