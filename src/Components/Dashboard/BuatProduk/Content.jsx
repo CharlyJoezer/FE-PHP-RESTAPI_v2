@@ -26,8 +26,45 @@ const Content = () => {
     const category = event.target.getAttribute("aria-label");
     inputCategory.current.value = category;
     btnCategory.current.style.transform = "rotate(0deg)";
-    setListCategory(false);
-    setCategoryStatus(true);
+    if(inputType.current !== null){
+      inputType.current.value = ''
+    }
+    async function sendRequestTypeProduk(subCategory){
+      try{
+        const params = new URLSearchParams({
+          'name_sub_category' : subCategory
+        })
+        const url = BASEURL()+`/api/types-sub-categories?${params}`
+        const request = await fetch(url,{
+          method : "GET",
+        })
+
+        if(request.status === 200){
+          const response = await request.json()
+          setDataTypeCategory(response.data)
+          setListCategory(false);
+          if(response.data.length <= 0){
+            setTypeStatus(true)
+            setCategoryStatus(false);
+          }else{
+            setCategoryStatus(true);
+          }
+          
+        }else if(request.status === 400){
+          setErrorRequest({show : true, code : 400})
+        }else if (request.status === 404){
+          setErrorRequest({show : true, code : 404})
+        }else{
+          throw new Error("500")
+        }
+
+        
+      }catch(error){
+        setErrorRequest({show : true, code : isNaN(error.message) ? "500" : error.message})
+      }
+    }  
+    sendRequestTypeProduk(category)
+
   }
   function handlePickType(event) {
     const type = event.target.getAttribute("aria-label");
@@ -234,20 +271,18 @@ const Content = () => {
                 </div>
                 {showType && (
                   <div className={css.list_type}>
-                    <div
-                      className={css.list_item_type}
-                      onClick={handlePickType}
-                      aria-label="Akun"
-                    >
-                      Akun
-                    </div>
-                    <div
-                      className={css.list_item_type}
-                      onClick={handlePickType}
-                      aria-label="Lock"
-                    >
-                      Lock
-                    </div>
+                    {dataTypeCategory.map(function(item){
+                      return (
+                        <div
+                          className={css.list_item_type}
+                          onClick={handlePickType}
+                          aria-label={item.name}
+                          key={item.name}
+                        >
+                          {item.name}
+                        </div>
+                      )
+                    })}
                   </div>
                 )}
               </div>
