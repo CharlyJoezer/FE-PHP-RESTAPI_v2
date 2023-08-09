@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { toRupiah } from "../../../Utils/toRupiahFormat";
 import BASEURL from "../../../Utils/baseURL"
 import ErrorPage from "../../../Pages/Errors/ErrorPage"
+import {Cookie} from "../../../Auth/Cookies"
 
 const Content = () => {
   const inputCategory = useRef(null);
@@ -302,6 +303,7 @@ const Content = () => {
                     name="name_product"
                     placeholder="Masukkan Nama Item yang kamu ingin jual"
                     autoComplete="off"
+                    required
                   />
                 </div>
                 <div className={css.input_image_product}>
@@ -310,6 +312,7 @@ const Content = () => {
                     <input
                       type="file"
                       name="image_product"
+                      required
                       onChange={(event) => {
                         const selectedFile = event.target.files[0];
                         if (selectedFile) {
@@ -340,6 +343,7 @@ const Content = () => {
                       cols="1"
                       rows="5"
                       placeholder="Masukan deskripsi Produk"
+                      required
                     ></textarea>
                   </div>
                 </div>
@@ -357,6 +361,7 @@ const Content = () => {
                       type="text"
                       placeholder="0"
                       name="price_product"
+                      required
                       onChange={(event) => {
                         const valueInput = event.target.value.replace(
                           /\./g,
@@ -377,6 +382,7 @@ const Content = () => {
                       type="numeric"
                       name="stock_product"
                       placeholder="0"
+                      required
                     />
                   </div>
                 </div>
@@ -389,6 +395,7 @@ const Content = () => {
                       type="numeric"
                       name="min_order_product"
                       placeholder="0"
+                      required
                     />
                   </div>
                 </div>
