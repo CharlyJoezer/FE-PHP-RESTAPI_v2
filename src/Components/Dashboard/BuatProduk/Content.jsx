@@ -6,6 +6,7 @@ import ErrorPage from "../../../Pages/Errors/ErrorPage"
 import {Cookie} from "../../../Auth/Cookies"
 import {useNavigate} from "react-router-dom"
 import Loading from "../../../Components/Loading/Loading"
+import Popup from "../../Popup/Popup"
 
 const Content = () => {
   const inputCategory = useRef(null);
@@ -23,6 +24,12 @@ const Content = () => {
   const [dataTypeCategory, setDataTypeCategory] = useState([])
   const [badRequest, setBadRequest] = useState([])
   const [loading, setLoading] = useState(false)
+  const [popup = {
+    show : false,
+    status : null,
+    message: null,
+    refresh:  false
+  }, setPopup] = useState([])
   const [errorRequest = {
     show : false,
     code : null
@@ -109,6 +116,8 @@ const Content = () => {
 
   return (
     <>
+      {popup.show && <Popup status={popup.status} message={popup.message} refresh={popup.refresh} />}
+
       {loading && <Loading />}
       {errorRequest.show ? 
         <ErrorPage code={errorRequest.code} />
@@ -116,6 +125,7 @@ const Content = () => {
       <div className={css.container_content}>
         
         <form onSubmit={(event) => {
+          setPopup({show: false, status: null, message: null})
           event.preventDefault()
           const data = Object.fromEntries(new FormData(event.target).entries())
           async function sendDataProduct(dataProduct){
@@ -141,12 +151,13 @@ const Content = () => {
                 body : formData
               })
               const response = await request.json()
-              setLoading(false)
               if(request.status === 201){
-                console.log('test')
+                setPopup({show: true, status: 'Success', message: '1 Produk Berhasil ditambahkan', refresh: true})
               }else if(request.status === 403){
                 navigate('/login')
               }else if(request.status === 400){
+                setLoading(false)
+                setPopup({show: true, status: 'Failed', message: 'Gagal membuat product'})
                 setBadRequest(response.data)
               }else if(request.status === 500){
                 throw new Error("500")
