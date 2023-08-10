@@ -188,7 +188,6 @@
 }
 .input_price_product{
   border-bottom: 2px solid #aaa;
-  margin-bottom: 15px;
 }
 .price_product_text{
   font-size: 14px;
@@ -209,7 +208,7 @@
   font-size: 15px;
 }
 .input_stock_product{
-  margin-bottom: 15px;
+  padding-top: 15px;
 }
 .stock_product_text{
   font-size: 14px;
@@ -226,7 +225,7 @@
   transition: 0.2s;
 }
 .input_min_order_product{
-  margin-bottom: 15px;
+  padding-top: 15px;
 }
 .min_order_product_text{
   font-size: 14px;
@@ -256,4 +255,8 @@
 }
 .confirm_form button:hover{
   background-color: #1d74df;
+}
+.error_message_input{
+  color: red!important;
+  font-size: 14px!important;
 }
