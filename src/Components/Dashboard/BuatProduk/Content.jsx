@@ -4,12 +4,15 @@ import { toRupiah } from "../../../Utils/toRupiahFormat";
 import BASEURL from "../../../Utils/baseURL"
 import ErrorPage from "../../../Pages/Errors/ErrorPage"
 import {Cookie} from "../../../Auth/Cookies"
+import {useNavigate} from "react-router-dom"
+import Loading from "../../../Components/Loading/Loading"
 
 const Content = () => {
   const inputCategory = useRef(null);
   const inputType = useRef(null);
   const btnCategory = useRef(null);
   const btnType = useRef(null);
+  const navigate = useNavigate()
 
   const [showListCategory, setListCategory] = useState(false);
   const [dataCategory, setDataCategory] = useState([]);
@@ -18,6 +21,8 @@ const Content = () => {
   const [categoryStatus, setCategoryStatus] = useState(false);
   const [typeStatus, setTypeStatus] = useState(false);
   const [dataTypeCategory, setDataTypeCategory] = useState([])
+  const [badRequest, setBadRequest] = useState([])
+  const [loading, setLoading] = useState(false)
   const [errorRequest = {
     show : false,
     code : null
@@ -104,6 +109,7 @@ const Content = () => {
 
   return (
     <>
+      {loading && <Loading />}
       {errorRequest.show ? 
         <ErrorPage code={errorRequest.code} />
         :
@@ -112,7 +118,44 @@ const Content = () => {
         <form onSubmit={(event) => {
           event.preventDefault()
           const data = Object.fromEntries(new FormData(event.target).entries())
-          console.log(data)
+          async function sendDataProduct(dataProduct){
+            try{
+              setLoading(true)
+              const token = Cookie(" itemku_token");
+              const url = BASEURL()+"/api/shop/dashboard/product";
+              const formData = new FormData();
+              formData.append('category_product', data['category_product'])
+              formData.append('category_type_product', data['category_type_product'])
+              formData.append('name_product', data['name_product'])
+              formData.append('image_product', data['image_product'])
+              formData.append('desc_product', data['desc_product'])
+              formData.append('price_product', data['price_product'].replace(/\./g, ''))
+              formData.append('stock_product', data['stock_product'])
+              formData.append('min_order_product', data['min_order_product'])
+  
+              const request = await fetch(url,{
+                method : "POST",
+                headers : {
+                  'Authorization' : token
+                },
+                body : formData
+              })
+              const response = await request.json()
+              setLoading(false)
+              if(request.status === 201){
+                console.log('test')
+              }else if(request.status === 403){
+                navigate('/login')
+              }else if(request.status === 400){
+                setBadRequest(response.data)
+              }else if(request.status === 500){
+                throw new Error("500")
+              }
+            }catch(error){
+             setErrorRequest({show: true, code: isNaN(error.message) ? "500" : error.message}) 
+            }
+          }
+          sendDataProduct(data)
 
         }} className={css.wrapper_form}>
           <div className={css.form_category_and_type}>
@@ -190,6 +233,10 @@ const Content = () => {
                 </g>
               </svg>
             </div>
+            <span className={css.error_message_input}>
+              {badRequest.category_product}
+            </span>
+
             {showListCategory && (
               <div className={css.list_input_category}>
                 {searchCategory.map(function(item){
@@ -270,6 +317,11 @@ const Content = () => {
                     </g>
                   </svg>
                 </div>
+                <span className={css.error_message_input}>
+                  {badRequest.category_type_product}
+                </span>
+                
+
                 {showType && (
                   <div className={css.list_type}>
                     {dataTypeCategory.map(function(item){
@@ -305,7 +357,11 @@ const Content = () => {
                     autoComplete="off"
                     required
                   />
+                  <span className={css.error_message_input}>
+                    {badRequest.name_product}
+                  </span>
                 </div>
+                
                 <div className={css.input_image_product}>
                   <div className={css.image_product_text}>Gambar Produk</div>
                   <div className={css.wrapper_input_file}>
@@ -333,6 +389,9 @@ const Content = () => {
                     akan otomatis di resize. dan harus berformat PNG,JPG atau
                     GIF.
                   </div>
+                  <span className={css.error_message_input}>
+                    {badRequest.image_product}
+                  </span>
                 </div>
                 <div className={css.input_desc_product}>
                   <div className={css.desc_product_text}>Deskripsi Produk</div>
@@ -346,6 +405,9 @@ const Content = () => {
                       required
                     ></textarea>
                   </div>
+                  <span className={css.error_message_input}>
+                    {badRequest.desc_product}
+                  </span>
                 </div>
               </div>
 
@@ -375,6 +437,10 @@ const Content = () => {
                     />
                   </div>
                 </div>
+                <span className={css.error_message_input}>
+                  {badRequest.price_product}
+                </span>
+
                 <div className={css.input_stock_product}>
                   <div className={css.stock_product_text}>Stok Produk</div>
                   <div className={css.wrapper_input_stock}>
@@ -385,7 +451,12 @@ const Content = () => {
                       required
                     />
                   </div>
+                  <span className={css.error_message_input}>
+                    {badRequest.stock_product}
+                  </span>
                 </div>
+
+                
                 <div className={css.input_min_order_product}>
                   <div className={css.min_order_product_text}>
                     Minimal Pembelian
@@ -398,6 +469,9 @@ const Content = () => {
                       required
                     />
                   </div>
+                  <span className={css.error_message_input}>
+                    {badRequest.min_order_product}
+                  </span>
                 </div>
               </div>
 
