@@ -36,6 +36,8 @@ const Content = () => {
   }, setErrorRequest] = useState([])
 
   function handlePickCategory(event) {
+    setTypeStatus(false)
+    setBadRequest([])
     const category = event.target.getAttribute("aria-label");
     inputCategory.current.value = category;
     btnCategory.current.style.transform = "rotate(0deg)";
@@ -80,6 +82,7 @@ const Content = () => {
 
   }
   function handlePickType(event) {
+    setBadRequest([])
     const type = event.target.getAttribute("aria-label");
     inputType.current.value = type;
     btnType.current.style.transform = "rotate(0deg)";
