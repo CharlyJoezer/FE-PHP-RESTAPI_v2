@@ -1,5 +1,6 @@
 import css from "./Content.module.css"
 import {Link} from "react-router-dom"
+import BASEURL from "../../../Utils/baseURL"
 
 const Content = (props) => {
     const data = props.data.data
@@ -13,7 +14,7 @@ const Content = (props) => {
                 <div className={css.shop_profil}>
                     <div className={css.shop_profil_content}>
                         <div className={css.shop_about}>
-                            <img src={data.image_shop} />
+                            <img src={BASEURL()+'/api/image/shop/'+data.image_shop} />
                             <div className={css.shop_about_data}>
                                 <div className={css.shop_about_name}>{data.name_shop}</div>
                                 <span className={css.shop_about_status}>Status : {data.status}</span>
