@@ -5,7 +5,8 @@ import { Cookie } from "../../../Auth/Cookies";
 import Loading from "../../Loading/Loading"
 import Popup from "../../Popup/Popup"
 
-export const Content = () => {
+export const Content = (props) => {
+  const dataShop = props.data
   const inputFile = useRef(null);
   const imageShop = useRef(null);
   const [isImageChange, setIsImageChange] = useState(false);
@@ -67,8 +68,8 @@ export const Content = () => {
             </svg>
           </div>
           <div className={css.biodata_shop}>
-            <div className={css.name_shop}>Lopix Store</div>
-            <div className={css.status_shop}>Status Toko : Tutup</div>
+            <div className={css.name_shop}>{dataShop.name}</div>
+            <div className={css.status_shop}>Status Toko : {dataShop.status}</div>
           </div>
         </div>
         <form className={css.form_image_shop} onSubmit={(e)=>{
