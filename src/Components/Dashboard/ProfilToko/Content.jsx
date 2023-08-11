@@ -34,7 +34,7 @@ export const Content = (props) => {
               ref={imageShop}
               onClick={handleClickChangeImage}
               className={css.image_shop}
-              src="https://itemku-upload.s3.ap-southeast-1.amazonaws.com/itemku-upload/20211013/p0el1iqv1se7abjmy6l4np.png"
+              src={BASEURL()+'/api/image/shop/'+dataShop.image}
               alt="profil-toko"
             />
             <svg
