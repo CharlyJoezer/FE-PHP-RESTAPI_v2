@@ -49,7 +49,7 @@ export const Modal_Edit = (props) => {
           </div>
           <div className={css.wrapper_input_stock}>
             <span>Stock Produk</span>
-            <Counter inputName="edit_produk" number={data.stock} />
+            <Counter nameInput="edit_stock" number={data.stock} />
           </div>
           <button className={css.btn_confirm} type="submit">
             Simpan Perubahan
