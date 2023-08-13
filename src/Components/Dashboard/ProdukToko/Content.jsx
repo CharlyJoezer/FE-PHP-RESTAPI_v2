@@ -1,20 +1,64 @@
 import css from "./Content.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal_Edit } from "./Modal_Edit";
 import { Modal_More } from "./Modal_More";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toRupiah } from "../../../Utils/toRupiahFormat";
+import BASEURL from "../../../Utils/baseURL";
+import { Cookie } from "../../../Auth/Cookies";
+import Loading from "../../Loading/Loading";
+import Popup from "../../Popup/Popup";
 
 const Content = (props) => {
-  const product = props.product
+  const [product, setProduct] = useState(props.product)
   const [modalEdit, setModalEdit] = useState([]);
   const [modalMore, setModalMore] = useState([]);
+  const inputSearch = useRef(null)
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const [popup = {
+    show: false,
+    status: null,
+    message: null,
+    refresh: false,
+  }, setPopup] = useState([])
   return (
     <>
+      {loading && <Loading />}
+      {popup.show && <Popup status={popup.status} message={popup.message}/>}
       <div className={css.container_content}>
         <div className={css.input_search_product}>
-          <input type="text" name="search" placeholder="Cari Produk Toko" />
-          <img src="/assets/icon/search-icon.png" alt="search" />
+          <input type="text" name="search" placeholder="Cari Produk Toko" ref={inputSearch}/>
+          <img src="/assets/icon/search-icon.png" alt="search" onClick={(e)=>{
+            (async () => {
+              try{
+                setLoading(true)
+                const searchWord = inputSearch.current.value
+                const token = Cookie(' itemku_token')
+                const url = BASEURL()+'/api/shop/dashboard/produk-toko?_search='+searchWord
+                const request = await fetch(url, {
+                  method: 'GET',
+                  headers: {
+                    Authorization: token
+                  }
+                })
+                const response = await request.json()
+                if(request.status === 200){
+                  setLoading(false)
+                  setProduct(response.data)
+                }else if(request.status === 400){
+                  setLoading(false)
+                  setErrorRequest({show: true, code: '400' })
+                }else if(request.status === 403){
+                  navigate('/login')
+                }else{
+                  throw new Error("500")
+                }
+              }catch(error){
+                setPopup({show: true, status: 'Failed', message: 'Server sedang bermasalah!'})
+              }
+            })()
+          }}/>
         </div>
 
         <div className={css.main_text_and_link_create_product}>
