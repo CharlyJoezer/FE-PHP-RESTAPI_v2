@@ -76,7 +76,7 @@ const Content = (props) => {
                   <span className={css.product_name}>{item.name}</span>
                   <svg
                     onClick={() => [
-                      setModalMore({ show: true, data: { id_product: "test" } }),
+                      setModalMore({ show: true, data: { id_product: item.id_p } }),
                     ]}
                     className={css.btn_more}
                     viewBox="0 0 24 24"

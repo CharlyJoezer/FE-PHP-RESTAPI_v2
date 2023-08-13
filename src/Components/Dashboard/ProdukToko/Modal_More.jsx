@@ -1,11 +1,26 @@
 import { useState } from "react";
 import css from "./Modal_More.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import BASEURL from "../../../Utils/baseURL";
+import { Cookie } from "../../../Auth/Cookies";
+import Loading from "../../Loading/Loading";
+import Popup from "../../Popup/Popup";
 
-export const Modal_More = () => {
-  const [deleteModal, setDeleteModal] = useState({ show: false, id: "test" });
+export const Modal_More = (props) => {
+  const product = props.data
+  const [deleteModal, setDeleteModal] = useState({ show: false, id: product.id_product });
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const [popup = {
+    show: false,
+    status: null,
+    message: null,
+    refresh: false,
+  }, setPopup] = useState([])
   return (
     <>
+      {loading && <Loading />}
+      {popup.show && <Popup status={popup.status} message={popup.message} refresh={popup.refresh}/>}
       <div className={css.container_modal_more}>
         <div
           className={css.modal}
@@ -33,7 +48,7 @@ export const Modal_More = () => {
             <div
               className={css.delete_product}
               onClick={() => {
-                setDeleteModal({ show: true, id: "test" });
+                setDeleteModal({ show: true, id: product.id_product });
               }}
             >
               Hapus Produk
@@ -56,7 +71,38 @@ export const Modal_More = () => {
             }}
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(deleteModal.id);
+              (async () => {
+                try{
+                  setPopup({show:false, status: null, message: null, refresh: false})
+                  setLoading(true)
+                  const token = Cookie(' itemku_token')
+                  const url = BASEURL()+'/api/shop/dashboard/produk-toko'
+                  const request = await fetch(url, {
+                    method: 'DELETE',
+                    headers: {
+                      Authorization: token,
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({product : deleteModal.id})
+                  })
+                  const response = await request.json()
+                  if(request.status === 200){
+                    setPopup({show: true, status: 'Success', message: 'Product berhasil dihapus!', refresh: true})
+                  }else if(request.status === 400){
+                    setLoading(false)
+                    setPopup({show: true, status: 'Failed', message: 'Gagal menghapus product!'})
+                  }else if(request.status === 409){
+                    setLoading(false)
+                    setPopup({show: true, status: 'Failed', message: response.message})
+                  }else if(request.status === 403){
+                    navigate('/login')
+                  }else{
+                    throw new Error("500")
+                  }
+                }catch(error){
+                  setPopup({show: true, status: 'Failed', message: 'Server sedang bermasalah!'})
+                }
+              })()
             }}
           >
             <div className={css.modal_delete_text}>
