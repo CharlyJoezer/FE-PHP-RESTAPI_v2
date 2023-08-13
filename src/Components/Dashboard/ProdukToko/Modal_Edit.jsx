@@ -2,21 +2,68 @@ import css from "./Modal_Edit.module.css";
 import { useState } from "react";
 import { toRupiah } from "../../../Utils/toRupiahFormat";
 import Counter from "../../Counter"
+import BASEURL from "../../../Utils/baseURL";
+import { Cookie } from "../../../Auth/Cookies";
+import Loading from "../../Loading/Loading";
+import Popup from "../../Popup/Popup"
+import { useNavigate } from "react-router-dom";
 
 export const Modal_Edit = (props) => {
   const { data } = props;
   const [price, setPrice] = useState(data.price);
+  const [loading, setLoading] = useState(false)
+  const [popup = {
+    show: false,
+    status: null,
+    message: null,
+    refresh: false,
+  }, setPopup] = useState([])
+  const navigate = useNavigate()
   return (
     <>
+      {loading && <Loading />}
+      {popup.show && <Popup status={popup.status} message={popup.message} refresh={popup.refresh}/>}
       <div className={css.container_modal_edit}>
         <form
           className={css.modal}
           onSubmit={(event) => {
             event.preventDefault();
-            const data = Object.fromEntries(
+            setLoading(true)
+            const dataForm = Object.fromEntries(
               new FormData(event.target).entries()
             );
-            console.log(data);
+            (async () => {
+              try{
+                const token = Cookie(' itemku_token')
+                const url = BASEURL()+"/api/shop/dashboard/produk-toko?_method=PATCH"
+                const request = await fetch(url, {
+                  method: 'POST',
+                  headers: {
+                    Authorization : token,
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    'product': data.product,
+                    'price': dataForm['edit_price'].replace(/\./g, ""),
+                    'stock': dataForm['edit_stock'],
+                  })
+                })
+                const response = await  request.json()
+                if(request.status === 200){
+                  setPopup({show: true, status: 'Success', message: 'Product berhasil diperbarui!', refresh: true})
+                }else if(request.status === 403){
+                  navigate('/login')
+                }else if(request.status === 400){
+                  setLoading(false)
+                  setPopup({show: true, status: 'Failed', message: 'Product gagal diperbarui!'})
+                }else{
+                  throw new Error()
+                }
+              }catch(error){
+                setPopup({show: true, status: 'Failed', message: 'Product gagal diperbarui!'})
+              }
+
+            })()
           }}
           onClick={(e) => {
             e.stopPropagation();
