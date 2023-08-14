@@ -1,12 +1,7 @@
 export function Cookie(name) {
-  const cookies = document.cookie.split(";");
-  let token = undefined;
-  for (let i = 0; i < cookies.length; i++) {
-    let arrayCookie = cookies[i].split("=");
-    if (arrayCookie[0] === name) {
-      token = arrayCookie[1];
-    }
+  const value = "; " + document.cookie;
+  const parts = value.split("; " + name + "=");
+  if (parts.length === 2) {
+    return parts.pop().split(";").shift();
   }
-
-  return token;
 }
