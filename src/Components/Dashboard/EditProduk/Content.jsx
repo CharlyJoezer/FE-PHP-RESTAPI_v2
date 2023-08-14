@@ -41,6 +41,9 @@ const Content = (props) => {
         if(request.status === 200){
           setLoading(false)
           setDataProduct(response.data)
+        }else if(request.status === 404){
+          setLoading(false)
+          setErrorRequest({show: true, code: "404"})
         }else if(request.status === 403){
           navigate('/login')
         }else if(request.status === 400){
