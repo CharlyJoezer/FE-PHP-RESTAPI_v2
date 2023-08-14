@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ErrorPage from "../../Pages/Errors/ErrorPage.jsx";
 
 const Logout = () => {
-    const token = Cookie(' itemku_token')
+    const token = Cookie('itemku_token')
     const navigate = useNavigate()
     const [errorRequest = {
         show : false,

@@ -148,7 +148,7 @@ const Content = () => {
               async function sendDataProduct(dataProduct) {
                 try {
                   setLoading(true);
-                  const token = Cookie(" itemku_token");
+                  const token = Cookie("itemku_token");
                   const url = BASEURL() + "/api/shop/dashboard/product";
                   const formData = new FormData();
                   formData.append("category_product", data["category_product"]);

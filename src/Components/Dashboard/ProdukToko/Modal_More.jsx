@@ -75,7 +75,7 @@ export const Modal_More = (props) => {
                 try{
                   setPopup({show:false, status: null, message: null, refresh: false})
                   setLoading(true)
-                  const token = Cookie(' itemku_token')
+                  const token = Cookie('itemku_token')
                   const url = BASEURL()+'/api/shop/dashboard/produk-toko'
                   const request = await fetch(url, {
                     method: 'DELETE',

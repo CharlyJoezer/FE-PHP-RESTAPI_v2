@@ -23,7 +23,7 @@ export const ProfilToko = () => {
         (async () => {
             try{
                 setLoading(true)
-                const token = Cookie(' itemku_token')
+                const token = Cookie('itemku_token')
                 const url = BASEURL()+"/api/shop/dashboard/profil-toko"
                 const request = await fetch(url, {
                     method : 'GET',

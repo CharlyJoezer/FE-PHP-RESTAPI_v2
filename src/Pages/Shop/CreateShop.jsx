@@ -18,7 +18,7 @@ const CreateShop = () => {
   useEffect(function(){
     async function checkAuth(){
       try{
-        const token = Cookie(' itemku_token')
+        const token = Cookie('itemku_token')
         const url = BASEURL()+"/api/auth/user-data"
         const request = await fetch(url, {
           method : 'GET',

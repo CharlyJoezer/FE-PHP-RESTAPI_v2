@@ -34,7 +34,7 @@ const Content = (props) => {
               try{
                 setLoading(true)
                 const searchWord = inputSearch.current.value
-                const token = Cookie(' itemku_token')
+                const token = Cookie('itemku_token')
                 const url = BASEURL()+'/api/shop/dashboard/produk-toko?_search='+searchWord
                 const request = await fetch(url, {
                   method: 'GET',

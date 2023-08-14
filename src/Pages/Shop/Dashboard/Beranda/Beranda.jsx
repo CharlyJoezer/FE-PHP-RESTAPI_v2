@@ -18,7 +18,7 @@ export const Beranda = () => {
     },
     setError,
   ] = useState([]);
-  const token = Cookie(" itemku_token");
+  const token = Cookie("itemku_token");
   const navigate = useNavigate();
 
   useEffect(function () {

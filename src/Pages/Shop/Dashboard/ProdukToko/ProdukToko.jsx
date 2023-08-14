@@ -24,7 +24,7 @@ export const ProdukToko = () =>{
         (async () => {
             try{
     
-                const token = Cookie(' itemku_token')
+                const token = Cookie('itemku_token')
                 const url = BASEURL()+"/api/shop/dashboard/produk-toko"
                 const request = await fetch(url, {
                     method : "GET",

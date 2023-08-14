@@ -7,7 +7,7 @@ import { Cookie } from "../../Auth/Cookies"
 import { useEffect, useState } from "react";
 
 const Login = () => {
-  const getToken = Cookie(' itemku_token')
+  const getToken = Cookie('itemku_token')
   const navigate = useNavigate()
 
   useEffect(function(){

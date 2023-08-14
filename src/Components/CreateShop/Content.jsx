@@ -27,7 +27,7 @@ const Content = () => {
 
         async function sendRequest(){
             try{
-                const token = Cookie(' itemku_token')
+                const token = Cookie('itemku_token')
                 const url = BASEURL()+"/api/shop/create"
                 const request = await fetch(url,{
                     method : 'POST',

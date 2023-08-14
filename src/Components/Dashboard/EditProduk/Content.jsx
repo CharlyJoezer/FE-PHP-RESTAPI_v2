@@ -28,7 +28,7 @@ const Content = (props) => {
   useEffect(function(){
     (async () => {
       try{
-        const token = Cookie(' itemku_token')
+        const token = Cookie('itemku_token')
         const url = BASEURL()+'/api/shop/dashboard/produk/edit?_product='+props.slug
         const request = await fetch(url, {
           method: 'GET',
@@ -83,7 +83,7 @@ const Content = (props) => {
                     formData.append('harga', data['harga'].replace(/\./g, ""))
                     formData.append('stock', data['stock'])
                     formData.append('min_pembelian', data['min_pembelian'])
-                    const token = Cookie(' itemku_token')
+                    const token = Cookie('itemku_token')
                     const url = BASEURL()+"/api/shop/dashboard/produk/edit?_method=PATCH&_product="+props.slug
                     const request = await fetch(url, {
                       method: 'POST',

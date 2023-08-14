@@ -12,7 +12,7 @@ import ErrorPage from "../../Pages/Errors/ErrorPage"
 
 const Profil = () => {
     document.title = 'Profil'
-    const token = Cookie(' itemku_token')
+    const token = Cookie('itemku_token')
     const [user, setDataUser] = useState([])
     const [loading, setLoading] = useState(true)
     const [auth, setAuth] = useState(false)

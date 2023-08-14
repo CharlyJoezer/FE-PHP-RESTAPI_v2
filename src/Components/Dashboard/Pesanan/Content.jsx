@@ -18,7 +18,7 @@ const Content = () => {
       ] = useState([]);
     const [dataOrder, setDataOrder] = useState([])
 
-    const token = Cookie(" itemku_token")
+    const token = Cookie("itemku_token")
     const navigate = useNavigate()
 
     

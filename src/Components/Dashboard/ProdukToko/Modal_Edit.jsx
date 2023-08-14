@@ -34,7 +34,7 @@ export const Modal_Edit = (props) => {
             );
             (async () => {
               try{
-                const token = Cookie(' itemku_token')
+                const token = Cookie('itemku_token')
                 const url = BASEURL()+"/api/shop/dashboard/produk-toko?_method=PATCH"
                 const request = await fetch(url, {
                   method: 'POST',
