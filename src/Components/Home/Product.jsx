@@ -2,29 +2,46 @@ import {useState, useEffect} from 'react'
 import css from "../Home/Product.module.css"
 import {Link} from "react-router-dom"
 import BASEURL from "../../Utils/baseURL"
+import {toRupiah} from "../../Utils/toRupiahFormat"
+import Popup from "../../Components/Popup/Popup"
 
 
 const Product = () => {
     const [products, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [popup = {
+      show:false,
+      status:null,
+      message:null,
+      refresh:false,
+    }, setPopup] = useState([])
     
     useEffect(
       function () {
         async function getProduct() {
-          const request = await fetch(
-            BASEURL()+"/api/product/get"
-          );
-  
-          const response = await request.json();
-  
-          setProduct(response.data);
-          setLoading(true);
+          try{
+            setPopup({show:false,status:null,message:null})
+            const request = await fetch(BASEURL()+"/api/product");
+    
+            const response = await request.json();
+            if(request.status === 200){
+              setProduct(response.pagination.data);
+            }else if(request.status === 404){
+              setPopup({show:true, status:'Failed', message:'Periksa Internet Anda'})
+            }else{
+              throw new Error()
+            }
+          }catch(error){
+            setPopup({show:true, status:'Failed', message:'Server sedang bemasalah'})
+          }
         }
         getProduct();
       },
       []
     );
     return (
+      <>
+      {popup.show && <Popup status={popup.status} message={popup.message} />}
       <div className={css.container_product}>
         <div className={css.text_header}>Temukan Produkmu</div>
         <div className={css.products}>
@@ -32,18 +49,19 @@ const Product = () => {
         {loading && 
           products.map(function (product) {
             return (
-              <Link to={'/product/'+product.id_product} className={css.product} key={product.id_product}>
+              <Link to={'/product/'+product.slug_product  } className={css.product} key={product.id_product}>
                 <img
                   className={css.product_image}
-                  src="https://images.tokopedia.net/img/cache/300-square/VqbcmM/2023/1/11/fe4b1b65-93b4-4f95-bebf-ddcd9f88c65d.jpg"
-                  alt="https://images.tokopedia.net/img/cache/300-square/VqbcmM/2023/1/11/fe4b1b65-93b4-4f95-bebf-ddcd9f88c65d.jpg"
+                  src={BASEURL()+'/api/image/product/'+product.path_image_product}
+                  alt={product.name_product}
                 />
                 <div className={css.product_desc}>
-                  <span className={css.product_name}>{product.name}</span>
-                  <span className={css.product_price}>Rp {product.price}</span>
-                  <span className={css.product_location}>
-                    <img src="assets/icon/location.png" alt="location" />
-                    <span>Jakarta Selatan</span>
+                  <span className={css.product_name}>{product.name_product}</span>
+                  <span className={css.product_price}>Rp {toRupiah(product.price_product.toString())}</span>
+                  <span className={css.product_category}>{product.sub_categories.name_sub_category}</span>
+                  <span className={css.name_shop_product}>
+                    <img src="assets/icon/shops.png" alt="shops" />
+                    <span>{product.shops.name_shop}</span>
                   </span>
                 </div>
               </Link>
@@ -52,6 +70,7 @@ const Product = () => {
         }
         </div>
       </div>
+      </>
     )
 }
 

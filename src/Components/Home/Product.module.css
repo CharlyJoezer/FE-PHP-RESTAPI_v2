@@ -31,6 +31,7 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   overflow: hidden;
+  object-fit: cover;
 }
 .product_desc {
   border: 1px solid #eee;
@@ -45,20 +46,25 @@
 .product_name {
   font-size: 16px;
   color: #555;
+  font-weight: bold;
 }
 .product_price {
   font-weight: bold;
   color: rgb(255, 145, 0);
 }
-.product_location {
+.product_category{
+  font-size: 12px;
+  color: grey;
+}
+.name_shop_product {
   display: flex;
   align-items: center;
   font-size: 14px;
   padding-top: 8px;
   color: grey;
 }
-.product_location img {
-  width: 10px;
+.name_shop_product img {
+  width: 15px;
   margin-right: 3px;
 }
 @media (max-width: 660px){
