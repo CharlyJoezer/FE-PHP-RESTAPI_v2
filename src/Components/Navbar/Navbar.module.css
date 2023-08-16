@@ -8,6 +8,7 @@
   bottom: 0;
   z-index: 2;
   background-color: white;
+  height: 60px;
 }
 .nav_list{
   width: 100%;
@@ -21,9 +22,10 @@
   align-items: center;
   cursor: pointer;
   padding: 10px 15px;
-  width: 100px;
+  width: 100%;
   transition: 0.4s;
   text-decoration: none;
+  box-sizing: border-box;
 }
 .nav_item:hover{
   background-color: #eee;
