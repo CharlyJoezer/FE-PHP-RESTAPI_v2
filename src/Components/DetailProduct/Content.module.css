@@ -20,7 +20,7 @@
 .product_price{
     font-size: 20px;
     font-weight: 500;
-    color: rgb(255, 145, 0);
+    color: #FF9100;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -35,8 +35,7 @@
     width: 100%;
     box-sizing: border-box;
     height: 100px;
-    box-shadow: 0 0 1px #ccc;
-    background-color: #f2f2f2;
+    border: 1px solid #ddd;
     border-radius: 12px;
     display: flex;
     justify-content: space-evenly;
@@ -52,9 +51,9 @@
     box-sizing: border-box;
 }
 
-.statistic_item svg{
-    width: 30px;
-    height: 30px;
+.statistic_item img{
+    width: 25px;
+    height: 25px;
 }
 .statistic_item div {
     padding-top: 1px;
