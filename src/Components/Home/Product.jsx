@@ -49,19 +49,19 @@ const Product = () => {
         {loading && 
           products.map(function (product) {
             return (
-              <Link to={'/product/'+product.slug_product  } className={css.product} key={product.id_product}>
+              <Link to={'/product/'+product.slug  } className={css.product} key={product.slug}>
                 <img
                   className={css.product_image}
-                  src={BASEURL()+'/api/image/product/'+product.path_image_product}
-                  alt={product.name_product}
+                  src={BASEURL()+'/api/image/product/'+product.gambar_produk}
+                  alt={product.nama_produk}
                 />
                 <div className={css.product_desc}>
-                  <span className={css.product_name}>{product.name_product}</span>
-                  <span className={css.product_price}>Rp {toRupiah(product.price_product.toString())}</span>
-                  <span className={css.product_category}>{product.sub_categories.name_sub_category}</span>
+                  <span className={css.product_name}>{product.nama_produk}</span>
+                  <span className={css.product_price}>Rp {toRupiah(product.harga_produk.toString())}</span>
+                  <span className={css.product_category}>{product.kategori_produk}</span>
                   <span className={css.name_shop_product}>
                     <img src="assets/icon/shops.png" alt="shops" />
-                    <span>{product.shops.name_shop}</span>
+                    <span>{product.nama_toko}</span>
                   </span>
                 </div>
               </Link>
