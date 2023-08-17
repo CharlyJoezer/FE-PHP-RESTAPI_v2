@@ -4,41 +4,59 @@ import Header from "../../Components/DetailProduct/Header"
 import Flow_Insert_Cart from "../../Components/DetailProduct/Flow_Insert_Cart"
 import { useEffect, useState } from "react";
 import Content from "../../Components/DetailProduct/Content";
+import BASEURL from "../../Utils/baseURL";
+import Loading from "../../Components/Loading/Loading";
+import ErrorPage from "../Errors/ErrorPage"
 
 const DetailProduk = () => {
   const params = useParams()
   const [product, setProduct] = useState({})
-
+  const [loading, setLoading] = useState(true)
+  const [errorRequest = {
+    show:false,
+    code: null
+  }, setErrorRequest] = useState([]) 
+  
   useEffect(function(){
-    async function getProductData(){
-
-      const url = 'http://localhost:8000/api/product/find'
-      const request = await fetch(url,{
-        method : 'POST',
-        headers : {
-          'Content-Type' : 'application/x-www-form-urlencoded'
-        },
-        body : new URLSearchParams(params).toString()
-      })
-      
-      const response = await request.json()
-
-      
-      if(request.ok){
-        setProduct(response.data[0])
+    (async() => {
+      try{
+        const url = BASEURL()+'/api/product/detail-product?slug='+params.id
+        const request = await fetch(url, {
+          method: 'GET'
+        })
+        const response = await request.json()
+        if(request.status === 200){
+          setProduct(response.data)
+          setLoading(false)
+        }else if(request.status === 404){
+          setLoading(false)
+          setErrorRequest({show:true, code: '404'})
+        }else{
+          throw new Error('500')
+        }
+      }catch(error){
+        setLoading(false)
+        setErrorRequest({show:true, code: isNaN(error.message) ? "500" : error.message})
       }
-    }
-
-    getProductData();
+    })()
   }, [])
 
   return (
     <>
-      <div className={css.container_detail_produk}>
-        <Header />
-        <Content product={product}/>
-      </div>
-      <Flow_Insert_Cart />
+      {loading ? <Loading />
+      :
+        errorRequest.show 
+        ? 
+          (<ErrorPage code={errorRequest.code} />)
+        : 
+          <>
+            <div className={css.container_detail_produk}>
+              <Header product={product}/>
+              <Content product={product}/>
+            </div>
+            <Flow_Insert_Cart />
+          </>
+      }
     </>
   );
 };
