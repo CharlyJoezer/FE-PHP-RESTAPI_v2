@@ -6,13 +6,14 @@
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  background-color: rgb(15, 124, 208);
+  border-bottom: 1px solid #ccc;
 }
 .back_btn {
   width: 30px;
   height: 100%;
+  object-fit: contain;
   padding: 0px 15px;
-  border-right: 1px solid #eeeeee20;
+  border-right: 1px solid #ccc;
   cursor: pointer;
   transition: 0.2s ease-out;
 }
@@ -22,7 +23,7 @@
 }
 .product_name {
   margin-left: 15px;
-  color: white;
+  color: black;
   font-weight: 500;
   font-size: 17px;
 }
