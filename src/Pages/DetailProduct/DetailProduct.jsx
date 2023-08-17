@@ -1,7 +1,7 @@
 import css from "./DetailProduct.module.css";
 import {useParams} from "react-router-dom"
 import Header from "../../Components/DetailProduct/Header"
-import Navbar from "../../Components/Navbar/Navbar"
+import Flow_Insert_Cart from "../../Components/DetailProduct/Flow_Insert_Cart"
 import { useEffect, useState } from "react";
 import Content from "../../Components/DetailProduct/Content";
 
@@ -38,7 +38,7 @@ const DetailProduk = () => {
         <Header />
         <Content product={product}/>
       </div>
-      <Navbar />
+      <Flow_Insert_Cart />
     </>
   );
 };
