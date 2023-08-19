@@ -54,7 +54,7 @@ const DetailProduk = () => {
               <Header product={product}/>
               <Content product={product}/>
             </div>
-            <Flow_Insert_Cart />
+            <Flow_Insert_Cart slug={product.slug_produk}/>
           </>
       }
     </>
