@@ -48,7 +48,7 @@ const Content = () => {
       {loading ? 
         <>
           <Loading />
-          {popup && <Popup show={popup.show} status={popup.status} message={popup.message}/>}
+          {popup.show && <Popup show={popup.show} status={popup.status} message={popup.message}/>}
         </>
         :
         <>
