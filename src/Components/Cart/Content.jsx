@@ -6,6 +6,7 @@ import BASEURL from "../../Utils/baseURL";
 import {toRupiah} from "../../Utils/toRupiahFormat"
 import Loading from "../Loading/Loading"
 import Popup from "../Popup/Popup"
+import {useNavigate} from "react-router-dom"
 
 const Content = () => {
   const [checklist, setChecklist] = useState([]);
@@ -16,6 +17,7 @@ const Content = () => {
     status:null,
     message:null,
   }, setPopup] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(function(){
     (async() => {
