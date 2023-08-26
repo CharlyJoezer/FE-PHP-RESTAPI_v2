@@ -160,6 +160,7 @@ const Content = () => {
                     <div className={css.delete_and_counter}>
                       <img src="/assets/icon/trash.png" alt="" />
                       <Counter
+                        min='1'
                         number={item.jumlah_produk}
                         sizeBtn="35px"
                         marginBtn="0px 3px"
