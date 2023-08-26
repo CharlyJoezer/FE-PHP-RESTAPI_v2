@@ -181,7 +181,7 @@ const Content = () => {
               <div className={css.text_count_checklist}>
                 Total Pembelian : (1 Produk)
               </div>
-              <div className={css.total_price}>Rp{totalPrice}</div>
+              <div className={css.total_price}>Rp{toRupiah(totalPrice.toString())}</div>
             </div>
             <button className={css.btn_checkout}>Checkout</button>
           </div>
