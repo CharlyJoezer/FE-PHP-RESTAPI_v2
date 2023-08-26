@@ -1,6 +1,6 @@
 import css from "./Content.module.css";
 import Counter from "../Counter";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { Cookie } from "../../Auth/Cookies";
 import BASEURL from "../../Utils/baseURL";
 import {toRupiah} from "../../Utils/toRupiahFormat"
@@ -18,6 +18,28 @@ const Content = () => {
     message:null,
   }, setPopup] = useState([]);
   const navigate = useNavigate()
+  const checkAll = useRef()
+  const allCheckbox = document.querySelectorAll('.checkbox')
+  const [totalPrice, setTotalPrice] = useState(0)
+  
+  const [checklistCount, dispatch] = useReducer(checkList, {count: 0});
+  function checkList(state, action){
+    switch(action.status){
+      case 'CHECKED':
+        if((state.count + 1) === dataCart.length){
+          checkAll.current.checked = true
+        }
+        return {count: state.count + 1}
+      case 'UNCHECKED':
+        checkAll.current.checked = false
+        return {count: state.count - 1}
+      case 'CHECKALL':
+        return {count: dataCart.length}
+      case 'UNCHECKALL':
+        return {count: 0}
+
+    }
+  }
 
   useEffect(function(){
     (async() => {
@@ -45,6 +67,7 @@ const Content = () => {
       }
     })()
   }, [])
+
   return (
     <>
       {loading ? 
@@ -56,7 +79,13 @@ const Content = () => {
         <>
           <div className={css.container_content}>
             <div className={css.feature_checklist_all}>
-              <input type="checkbox" />
+              <input type="checkbox" ref={checkAll} onClick={(e)=>{
+                const statusEventCheck = e.target.checked
+                allCheckbox.forEach(function(cb){
+                  cb.checked = statusEventCheck;
+                })
+                dispatch({status: statusEventCheck ? 'CHECKALL' : 'UNCHECKALL'})
+              }}/>
               <span>Pilih Semua</span>
             </div>
             <div className={css.list_cart_item}>
@@ -64,7 +93,16 @@ const Content = () => {
               return (
               <div className={css.cart_item} key={item.slug_produk}>
                 <div className={css.checklist_cart_item}>
-                  <input type="checkbox" />
+                  <input 
+                    className="checkbox"
+                    type="checkbox"
+                    data={JSON.stringify(item)}
+                    onClick={(e) => {
+                      const statusCheck = e.target.checked
+                      statusCheck ? setTotalPrice(totalPrice + item.harga_produk) : setTotalPrice(totalPrice - item.harga_produk)
+                      dispatch({status: statusCheck ? 'CHECKED' : 'UNCHECKED'})
+                    }}
+                    />
                 </div>
 
                 <div className={css.info_product_and_action}>
@@ -142,7 +180,7 @@ const Content = () => {
               <div className={css.text_count_checklist}>
                 Total Pembelian : (1 Produk)
               </div>
-              <div className={css.total_price}>Rp5.000</div>
+              <div className={css.total_price}>Rp{totalPrice}</div>
             </div>
             <button className={css.btn_checkout}>Checkout</button>
           </div>
