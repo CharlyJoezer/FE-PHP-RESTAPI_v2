@@ -1,7 +1,7 @@
 import {useState} from "react"
 
 const Counter = (props) => {
-  const {number = 0, sizeBtn = "40px", marginBtn = '0px 15px', nameInput} = props
+  const {min = 0, number = 0, sizeBtn = "40px", marginBtn = '0px 15px', nameInput} = props
   const [counter, setCounter] = useState(parseInt(number));
   return (
     <>
@@ -14,7 +14,7 @@ const Counter = (props) => {
           src="/assets/icon/minus.png"
           alt="minus"
           style={{
-            opacity: counter === 0 && "0.3",
+            opacity: counter == min && "0.3",
             lineHeight: "none",
             margin: marginBtn,
             width: sizeBtn,
@@ -25,7 +25,7 @@ const Counter = (props) => {
           }}
           onClick={() => {
             const getValue = counter - 1;
-            if (getValue < 0) {
+            if (getValue < min) {
               return false;
             }
             setCounter(getValue);
@@ -65,7 +65,7 @@ const Counter = (props) => {
             onKeyUp={(event) => {
               const getValue =
                 event.target.value === ""
-                  ? 0
+                  ? min
                   : parseInt(event.target.value.replace(/\D/g, ""));
               if (getValue >= 10000) {
                 setCounter(9999);
