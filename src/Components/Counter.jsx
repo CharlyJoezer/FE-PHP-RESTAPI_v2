@@ -14,7 +14,7 @@ const Counter = (props) => {
           src="/assets/icon/minus.png"
           alt="minus"
           style={{
-            opacity: counter == min && "0.3",
+            opacity: counter <= min && "0.3",
             lineHeight: "none",
             margin: marginBtn,
             width: sizeBtn,
