@@ -21,7 +21,6 @@ const Content = () => {
   const checkAll = useRef()
   const allCheckbox = document.querySelectorAll('.checkbox')
   const [totalPrice, setTotalPrice] = useState(0)
-  
   const [checklistCount, dispatch] = useReducer(checkList, {count: 0});
   function checkList(state, action){
     switch(action.status){
@@ -37,8 +36,30 @@ const Content = () => {
         return {count: dataCart.length}
       case 'UNCHECKALL':
         return {count: 0}
-
     }
+  }
+  function updateAll(){
+    let totalPrice = 0;
+    allCheckbox.forEach((item)=>{
+      if(item.checked){
+        const productData = JSON.parse(item.getAttribute('data'))
+        totalPrice = totalPrice + (productData.harga_produk * productData.jumlah_produk)
+      }
+    })
+    setTotalPrice(totalPrice)
+  }
+
+  function updateAttrDataCart(value, slug){
+    allCheckbox.forEach((item)=>{
+      const getData = JSON.parse(item.getAttribute('data'))
+      if(getData.slug_produk === slug){
+        getData.jumlah_produk = value
+        item.setAttribute('data', JSON.stringify(getData))
+        setTimeout(() => {
+          updateAll()
+        }, 1);
+      }
+    })
   }
 
   useEffect(function(){
@@ -85,6 +106,7 @@ const Content = () => {
                   cb.checked = statusEventCheck;
                 })
                 dispatch({status: statusEventCheck ? 'CHECKALL' : 'UNCHECKALL'})
+                updateAll()
               }}/>
               <span>Pilih Semua</span>
             </div>
@@ -99,8 +121,8 @@ const Content = () => {
                     data={JSON.stringify(item)}
                     onClick={(e) => {
                       const statusCheck = e.target.checked
-                      statusCheck ? setTotalPrice(totalPrice + item.harga_produk) : setTotalPrice(totalPrice - item.harga_produk)
                       dispatch({status: statusCheck ? 'CHECKED' : 'UNCHECKED'})
+                      updateAll()
                     }}
                     />
                 </div>
@@ -158,13 +180,16 @@ const Content = () => {
                   </div>
                   <div className={css.other_action}>
                     <div className={css.delete_and_counter}>
-                      <img src="/assets/icon/trash.png" alt="" />
+                      <img src="/assets/icon/trash.png" alt="trash" />
                       <Counter
                         min='1'
                         number={item.jumlah_produk}
                         sizeBtn="35px"
                         marginBtn="0px 3px"
                         nameInput="purchase_amount"
+                        cartCallback={updateAttrDataCart}
+                        cartSlug={item.slug_produk}
+                        cartMode={true}
                       />
                     </div>
                     <span className={css.info_stock}>Stok {item.stok_produk}</span>

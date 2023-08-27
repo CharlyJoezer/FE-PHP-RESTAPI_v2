@@ -3,6 +3,11 @@ import {useState} from "react"
 const Counter = (props) => {
   const {min = 0, number = 0, sizeBtn = "40px", marginBtn = '0px 15px', nameInput} = props
   const [counter, setCounter] = useState(parseInt(number));
+  const cart = {
+    status: props.cartMode ? props.cartMode : false,
+    slug: props.cartSlug,
+    callback: props.cartCallback,
+  }
   return (
     <>
       <div className="container_counter" style={{
@@ -29,6 +34,7 @@ const Counter = (props) => {
               return false;
             }
             setCounter(getValue);
+            (cart.status && cart.callback(getValue, cart.slug))
           }}
         />
         <div
@@ -91,6 +97,7 @@ const Counter = (props) => {
             const getValue = counter + 1;
             if (getValue < 10000) {
               setCounter(getValue);
+              cart.callback(getValue, cart.slug)
             }
           }}
         />
