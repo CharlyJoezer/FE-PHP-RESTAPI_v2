@@ -75,8 +75,10 @@ const Counter = (props) => {
                   : parseInt(event.target.value.replace(/\D/g, ""));
               if (getValue >= 10000) {
                 setCounter(9999);
+                cart.callback(9999, cart.slug)
               } else {
                 setCounter(getValue);
+                cart.callback(getValue, cart.slug)
               }
             }}
           />
