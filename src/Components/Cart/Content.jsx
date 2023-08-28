@@ -53,11 +53,43 @@ const Content = () => {
     allCheckbox.forEach((item)=>{
       const getData = JSON.parse(item.getAttribute('data'))
       if(getData.slug_produk === slug){
+        async function sendUpdateCart(value, slug, ){
+          try{
+            setPopup({show:false, status:null, message: null
+            })
+            const token = Cookie('itemku_token')
+            const url = BASEURL()+'/api/cart?_method=PATCH'
+            const request = await fetch(url, {
+              method: 'POST',
+              headers: {
+                Authorization: token,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                'amount_product' : value,
+                'product' : slug
+              })
+            })
+            const response = await request.json()
+            if(request.status === 200){
+              setPopup({show:true, status:'Success', message: response.message})
+            }else if(request.status === 403){
+              navigate('/login');
+            }else if(request.status === 404){
+              setPopup({show:true, status:'Failed', message: response.message})
+            }else if(request.status === 400){
+              setPopup({show:true, status:'Failed', message: response.message})  
+            }else{
+              throw new error('Server Error')
+            }
+          }catch(error){
+            setPopup({show:true, status:'Failed', message: error.message})
+          }
+        }
+        sendUpdateCart(value, slug)
         getData.jumlah_produk = value
         item.setAttribute('data', JSON.stringify(getData))
-        setTimeout(() => {
-          updateAll()
-        }, 1);
+        updateAll()
       }
     })
   }
@@ -91,10 +123,10 @@ const Content = () => {
 
   return (
     <>
+      {popup.show && <Popup show={popup.show} status={popup.status} message={popup.message}/>}
       {loading ? 
         <>
           <Loading />
-          {popup.show && <Popup show={popup.show} status={popup.status} message={popup.message}/>}
         </>
         :
         <>
