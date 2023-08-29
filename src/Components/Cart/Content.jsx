@@ -98,6 +98,55 @@ const Content = () => {
     })
   }
 
+  function deleteDataCart(slug){
+    allCheckbox.forEach((item)=>{
+      const getSlug = JSON.parse(item.getAttribute('data'))
+      if(getSlug.slug_produk === slug){
+        (async()=>{
+          try{
+            item.parentNode.parentNode.remove()
+            const token = Cookie('itemku_token')
+            const url = BASEURL()+'/api/cart?_method=DELETE'
+            const request = await fetch(url, {
+              method: 'POST',
+              headers: {
+                Authorization: token,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                'slug': slug 
+              }),
+            })
+            const response = await request.json()
+            switch(request.status){
+              case 200:
+                let totalPrice = 0;
+                const allDataCart = document.querySelectorAll('.checkbox')
+                allDataCart.forEach((item)=>{
+                  if(item.checked){
+                    const productData = JSON.parse(item.getAttribute('data'))
+                    totalPrice = totalPrice + (productData.harga_produk * productData.jumlah_produk)
+                  }
+                })
+                setTotalPrice(totalPrice)
+                break;
+              case 400:
+                setPopup({show:true, status:'Failed', message:response.message})
+                break;
+              case 403:
+                navigate('/login')
+                break;
+              case 500:
+                throw new error()
+            }
+          }catch(error){
+            setPopup({show:true, status:'Failed', message:'Server bermasalah!'})
+          }
+        })()
+      }
+    })
+  }
+
   useEffect(function(){
     (async() => {
       try{
@@ -216,7 +265,11 @@ const Content = () => {
                   </div>
                   <div className={css.other_action}>
                     <div className={css.delete_and_counter}>
-                      <img src="/assets/icon/trash.png" alt="trash" />
+                      <img src="/assets/icon/trash.png" alt="trash"
+                       slug={item.slug_produk} onClick={(e) => {
+                        const slug = e.target.getAttribute('slug')
+                        deleteDataCart(slug)
+                      }}/>
                       <Counter
                         min='1'
                         number={item.jumlah_produk}
