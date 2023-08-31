@@ -9,6 +9,7 @@ import AuthRequired from "../../Components/AuthRequired/AuthRequired.jsx"
 import Loading from "../../Components/Loading/Loading"
 import BASEURL from "../../Utils/baseURL"
 import ErrorPage from "../../Pages/Errors/ErrorPage"
+import ModalEditProfil from "../../Components/Profil/ModalEditProfil"
 
 const Profil = () => {
     document.title = 'Profil'
@@ -20,6 +21,10 @@ const Profil = () => {
       show : false,
       code : null
     }, setErrorRequest] = useState([])
+    const [modalEditProfil = {
+      show: false,
+      data: {},
+    }, setModalEditProfil] = useState([])
 
     useEffect(function(){
       if(token === undefined){
@@ -69,9 +74,10 @@ const Profil = () => {
                 {loading ? <Loading /> :
                   auth ?
                   <>
-                    <Header users={user}/>
+                    <Header users={user} modalEditProfil={setModalEditProfil}/>
                     <Content />
                     <Footer />
+                    {modalEditProfil.show && <ModalEditProfil users={modalEditProfil.data} closeModal={setModalEditProfil}/>}
                   </>
 
                   :

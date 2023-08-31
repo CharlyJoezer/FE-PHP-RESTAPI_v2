@@ -1,0 +1,136 @@
+.container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 700px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.295);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container .modal {
+    margin-top: -50px;
+    width: 80%;
+    min-height: auto;
+    max-height: 60%;
+    background-color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: relative;
+}
+.modal .modal_title{
+    padding: 12px 0px;
+    box-shadow: 0 0 5px #aaa;
+    text-align: center;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+.close_modal_button{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+.modal_content{
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+.modal_content .input_profil_image {
+    display: flex;;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.modal_content .input_profil_image img{
+    width: 80px;
+    height: 80px;
+    object-fit:cover;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    color: rgb(0, 76, 255);
+    border: 2px solid #ddd;
+}
+
+.modal_content .input_name {
+    margin-bottom: 10px;
+}
+.modal_content .input_name span{
+    color: #aaa;
+    font-size: 14px;
+}
+.modal_content .input_name input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0px;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+.modal_content .input_name input:focus{
+    border-color: rgb(0, 76, 255);
+}
+.modal_content .input_email {
+    margin-bottom: 10px;
+}
+.modal_content .input_email span{
+    color: #aaa;
+    font-size: 14px;
+}
+.modal_content .input_email input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0px;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+.modal_content .input_email input:focus{
+    border-color: rgb(0, 76, 255);
+}
+.invalidRequest{
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+    font-weight: 500;
+}
+.save_edit{
+    width: 100%;
+    margin: 20px 0px;
+    box-sizing: border-box;
+    padding: 12px 0px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #0f7cd0;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: 0.2s;
+}
+.save_edit:hover{
+    background-color: #006fc3;
+}
+@media screen and (max-width: 700px) {
+    .container{
+        width: 100%;
+    }
+    .container .modal{
+        width: 90%;
+    }
+}

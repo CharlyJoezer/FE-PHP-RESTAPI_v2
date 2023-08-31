@@ -1,7 +1,9 @@
 import css from "../Profil/Header.module.css";
 import {Link} from "react-router-dom"
+import BASEURL from "../../Utils/baseURL";
 
 const Header = (props) => {
+  const {modalEditProfil, users} = props;
   return (
     <>
       <div className={css.header_wrapper}>
@@ -11,10 +13,10 @@ const Header = (props) => {
         </Link>
         <div className={css.header}>
           <div className={css.profil_user}>
-            <img className={css.profil_image} src="assets/icon/profil.png" alt="" />
+            <img className={css.profil_image} src={(users.foto_profil !== '/assets/users/image/default.jpg') ? BASEURL()+'/api/image/user/'+users.foto_profil : '/assets/users/image/default.jpg'} alt="" />
             <div className={css.profil_desc}>
-              <div className={css.profil_name}>{props.users.username}</div>
-              <div className={css.profil_email}>{props.users.email}</div>
+              <div className={css.profil_name}>{users.username}</div>
+              <div className={css.profil_email}>{users.email}</div>
               <div className={css.profil_wallet}>
                 <img src="assets/icon/wallet.png" alt="" />
                 <span>Rp 22.135</span>
@@ -22,7 +24,9 @@ const Header = (props) => {
             </div>
           </div>
           <div className={css.list_btn}>
-            <Link className={css.edit_profil_btn}>Edit Profil</Link>
+            <Link className={css.edit_profil_btn} onClick={()=>{
+              modalEditProfil({show:true, data:users})
+            }}>Edit Profil</Link>
             <Link className={css.topup_wallet_btn}>Topup Saldo</Link>
           </div>
         </div>
