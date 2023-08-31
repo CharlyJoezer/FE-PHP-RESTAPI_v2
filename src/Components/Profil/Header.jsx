@@ -19,7 +19,7 @@ const Header = (props) => {
               <div className={css.profil_email}>{users.email}</div>
               <div className={css.profil_wallet}>
                 <img src="assets/icon/wallet.png" alt="" />
-                <span>Rp 22.135</span>
+                <span>Rp 10.000</span>
               </div>
             </div>
           </div>

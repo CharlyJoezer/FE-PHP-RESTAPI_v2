@@ -4,7 +4,6 @@ import Navbar from "../../Components/Navbar/Navbar"
 import {Cookie} from "../../Auth/Cookies"
 import Header from "../../Components/Profil/Header"
 import Content from "../../Components/Profil/Content"
-import Footer from "../../Components/Profil/Footer"
 import AuthRequired from "../../Components/AuthRequired/AuthRequired.jsx"
 import Loading from "../../Components/Loading/Loading"
 import BASEURL from "../../Utils/baseURL"
@@ -76,7 +75,6 @@ const Profil = () => {
                   <>
                     <Header users={user} modalEditProfil={setModalEditProfil}/>
                     <Content />
-                    <Footer />
                     {modalEditProfil.show && <ModalEditProfil users={modalEditProfil.data} closeModal={setModalEditProfil}/>}
                   </>
 
