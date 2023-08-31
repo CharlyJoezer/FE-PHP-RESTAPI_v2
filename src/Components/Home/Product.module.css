@@ -2,7 +2,7 @@
   padding: 0px 10px;
 }
 .container_product .text_header{
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: 10px;
   font-weight: 500;
 }
@@ -16,7 +16,8 @@
   flex-direction: column;
   border-radius: 8px;
   box-sizing: border-box;
-  box-shadow: 0 0 5px #ddd;
+  box-shadow: 0 0px 2px 1px #eee;
+  border: 1px solid #ddd;
   overflow: hidden;
   cursor: pointer;
   transition: 0.2s;
@@ -59,9 +60,11 @@
 .name_shop_product {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 13px;
   padding-top: 8px;
-  color: grey;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 .name_shop_product img {
   width: 15px;

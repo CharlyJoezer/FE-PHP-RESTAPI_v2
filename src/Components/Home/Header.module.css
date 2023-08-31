@@ -1,6 +1,4 @@
 .header_wrapper {
-  border-bottom-right-radius: 25px;
-  border-bottom-left-radius: 25px;
   background-color: rgb(15, 124, 208);
   padding-bottom: 20px;
   position: sticky;
@@ -32,7 +30,7 @@
   padding-left: 15px;
   box-sizing: border-box;
   width: 100%;
-  font-size: 15px;
+  font-size: 13px;
 }
 .input_search img {
   position: absolute;
