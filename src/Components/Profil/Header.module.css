@@ -45,6 +45,7 @@
     box-sizing: border-box;
     padding: 5px;
     border-radius: 50%;
+    object-fit: cover;
 }
 .profil_desc{
     padding-left: 10px;
