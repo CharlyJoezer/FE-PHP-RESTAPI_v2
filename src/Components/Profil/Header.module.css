@@ -1,14 +1,14 @@
 .header_wrapper {
   width: 100%;
   box-sizing: border-box;
-  height: 200px;
+  height: 180px;
   background-color: rgb(31, 120, 189);
   position: relative;
 }
 .header {
   width: 100%;
   box-sizing: border-box;
-  height: 200px;
+  height: 180px;
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -52,12 +52,13 @@
     line-height: 1;
 }
 .profil_name {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     color: white;
     margin-bottom: 1px;
 }
 .profil_email{
+    font-size: 13px;
     color: #ddd;
     margin-bottom: 5px;
 }
@@ -81,12 +82,12 @@
     margin-top: 10px;
 }
 .edit_profil_btn, .topup_wallet_btn{
-    width: 150px;
+    width: 120px;
     margin-right: 10px;
-    padding: 8px 10px;
-    font-size: 14px;
+    padding: 6px 3px;
+    font-size: 13px;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
     box-sizing: border-box;
