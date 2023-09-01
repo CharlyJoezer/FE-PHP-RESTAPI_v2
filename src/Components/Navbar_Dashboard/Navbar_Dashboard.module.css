@@ -25,13 +25,13 @@
     background-color: #eee;
 }
 .navbar_link_icon{
-    width: 25px!important;
-    height: 25px!important;
+    width: 20px!important;
+    height: 20px!important;
     margin-bottom: 3px;
 }
 .navbar_link .navbar_link_title{
     color: #555;
-    font-size: 13px;
+    font-size: 12px;
     text-align: center;
     width: 100%;
     text-overflow: ellipsis;
