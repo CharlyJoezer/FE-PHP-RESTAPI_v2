@@ -29,8 +29,8 @@
   margin-bottom: 15px;
 }
 .form_category_and_type .input_category_text {
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: bold;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 .form_category_and_type .input {
@@ -41,13 +41,13 @@
   border: 1px solid #ccc;
   outline: none;
   padding: 12px 12px;
-  font-size: 14px;
+  font-size: 13px;
   box-sizing: border-box;
   border-radius: 5px;
   width: 100%;
 }
 .form_category_and_type .input svg {
-  width: 23px;
+  width: 20px;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -66,6 +66,7 @@
   transition: 0.2s;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 13px;
 }
 .list_item_category:hover {
   background-color: #eee;
@@ -78,7 +79,7 @@
   border: 1px solid #ccc;
   outline: none;
   padding: 12px 12px;
-  font-size: 14px;
+  font-size: 13px;
   box-sizing: border-box;
   border-radius: 5px;
 }
@@ -95,6 +96,7 @@
   transition: 0.2s;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 13px;
 }
 .list_item_type:hover {
   background-color: #eee;
@@ -103,8 +105,8 @@
   margin-bottom: 15px;
 }
 .information_product_text{
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: bold;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 .input_name_product{
@@ -113,7 +115,7 @@
   margin-bottom: 10px;
 }
 .input_name_product span{
-  font-size: 14px;
+  font-size: 13px;
   color: #333;
 }
 .input_name_product input{
@@ -135,7 +137,7 @@
   margin-bottom: 10px;
 }
 .input_image_product .image_product_text {
-  font-size: 14px;
+  font-size: 13px;
   color: #333;
   margin-bottom: 5px;
 }
@@ -165,7 +167,7 @@
   padding-top: 5px;
 }
 .desc_product_text{
-  font-size: 14px;
+  font-size: 13px;
   color: #333;
   margin-bottom: 5px;
 }
@@ -182,8 +184,8 @@
   margin-bottom: 30px;
 }
 .information_stock_and_price_text{
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: bold;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 .input_price_product{
@@ -198,14 +200,14 @@
   padding: 5px 0px;
 }
 .wrapper_input_price span{
-  font-size: 17px;
+  font-size: 14px;
 }
 .wrapper_input_price input{
   border: none;
   outline: none;
   box-sizing: border-box;
   width: 100%;
-  font-size: 15px;
+  font-size: 13px;
 }
 .input_stock_product{
   padding-top: 15px;
@@ -221,7 +223,7 @@
   outline: none;
   box-sizing: border-box;
   width: 100%;
-  font-size: 15px;
+  font-size: 13px;
   transition: 0.2s;
 }
 .input_min_order_product{
@@ -238,7 +240,7 @@
   outline: none;
   box-sizing: border-box;
   width: 100%;
-  font-size: 15px;
+  font-size: 13px;
   transition: 0.2s;
 }
 .confirm_form button{
