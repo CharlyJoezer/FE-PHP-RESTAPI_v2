@@ -16,7 +16,7 @@
   box-sizing: border-box;
 }
 .text_header img {
-  width: 250px;
+  width: 200px;
 }
 .form_input {
   width: 100%;
@@ -52,8 +52,8 @@
   background-color: white;
   outline: none;
   border-radius: 5px;
-  padding: 8px 8px;
-  font-size: 15px;
+  padding: 5px 8px;
+  font-size: 14px;
   font-weight: 500;
   color: #555;
   box-sizing: border-box;
@@ -83,7 +83,7 @@
 .btn_submit button {
   width: 50%;
   padding: 15px 0px;
-  font-size: 17px;
+  font-size: 15px;
   color: white;
   background-color: rgb(31, 120, 189);
   border: none;

@@ -8,11 +8,13 @@
   display: flex;
   justify-content: center;
   box-shadow: 0 0 5px #ccc;
+  height: 70px;
+  box-sizing: border-box;
 }
 .navbar a {
   display: flex;
   align-items: center;
 }
 .navbar img {
-  width: 120px;
+  width: 100px;
 }
