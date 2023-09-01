@@ -1,6 +1,5 @@
 .container_content_beranda{
-    padding: 0px 10px;
-    background-color: #fafafa;
+    background-color: #f1f1f1;
     height: 100vh;
     padding-bottom: 200px;
 }
@@ -8,9 +7,12 @@
     padding: 10px 15px;
     box-sizing: border-box;
     text-align: center;
+    background-color: white;
+    position: sticky;
+    top: 0;
 }
 .main_image img{
-    width: 120px;
+    width: 100px;
     padding-top: 5px;
 }
 .shop_profil{
@@ -38,7 +40,7 @@
     line-height: 1;
 }
 .shop_about_name{
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
 }
 .shop_about_status{
@@ -52,7 +54,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 13px;
+    font-size: 12px;
     text-decoration: none;
 }
 .btn_shop_detail:hover{
@@ -60,20 +62,21 @@
 }
 .shop_activity{
     margin-bottom: 15px;
+    padding: 10px 12px;
+    background-color: white;
 }
 .shop_activity_title, .shop_title, .shop_balance_title, .shop_statistic_title div{
-    font-size: 16px;
-    font-weight: 500;
-    color: #444;
+    font-size: 15px;
+    font-weight: bold;
+    color: #111;
     margin-bottom: 5px;
 }
 .list_activity{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
+    gap: 8px;
 }
 .box_activity{
-    padding: 10px 12px;
     box-shadow: 0 0 2px #eee;
     border-radius: 5px;
     box-sizing: border-box;
@@ -81,7 +84,7 @@
 }
 .box_activity_title{
     color: #888;
-    font-size: 14px;
+    font-size: 13px;
 }
 .box_activity_info {
     display: flex;
@@ -89,8 +92,8 @@
     padding-top: 5px;
 }
 .box_activity_info svg{
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
 }
 .box_activity_info .box_activity_info_count{
     padding-left: 5px;
@@ -100,21 +103,22 @@
 }
 .shop_balance{
     margin-bottom: 15px;
+    background-color: white;
+    padding: 10px 12px;
 }
 .shop_balance_info{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
-    gap: 10px;
+    gap: 8px;
 }
 .transaction_success_box, .transaction_process_box{
-    padding: 10px 12px;
     box-shadow: 0 0 2px #eee;
     border-radius: 5px;
     box-sizing: border-box;
     background-color: white;
 }
 .transaction_title{
-    font-size: 14px;
+    font-size: 13px;
     color: #555;
     margin-bottom: 8px;
 }
@@ -123,13 +127,17 @@
     align-items: center;
 }
 .transaction_info svg{
-    width: 25px;
+    width: 22px;
 }
 .transaction_balance_amount{
     font-size: 18px;
     padding-left: 5px;
     font-weight: bold;
     color: #333;
+}
+.shop_statistic{
+    background-color: white;
+    padding: 10px 12px;
 }
 .shop_statistic_title{
     line-height: 0.9;
@@ -145,13 +153,12 @@
     border-radius: 8px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    padding: 10px 12px;
     gap: 10px;
     box-sizing: border-box;
     flex-wrap: wrap;
 }
 .shop_statistic_item_title{
-    font-size: 14px;
+    font-size: 13px;
     color: #888;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -164,7 +171,7 @@
     padding-top: 5px;
 }
 .shop_statistic_item_info svg{
-    width: 25px;
+    width: 22px;
 }
 .amount{
     font-size: 18px;
