@@ -3,6 +3,7 @@ import Content from '../../Components/Cart/Content'
 import HeaderTitleAndBack from "../../Components/HeaderTitleAndBack"
 
 const Cart = () => {
+    document.title = 'Keranjang | Itemku'
     return (
         <>
             <div className={css.container_cart}>

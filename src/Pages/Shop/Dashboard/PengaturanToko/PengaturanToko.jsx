@@ -4,6 +4,7 @@ import { Header } from "../../../../Components/Dashboard/Components/Header/Heade
 import Content from "../../../../Components/Dashboard/PengaturanToko/Content"
 
 export const PengaturanToko = () => {
+    document.title = 'Pengaturan | Dashboard'
     return (
         <>
             <div className={css.container_pengaturan_toko}>

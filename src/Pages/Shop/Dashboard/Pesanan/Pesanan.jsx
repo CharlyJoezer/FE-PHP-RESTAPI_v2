@@ -5,6 +5,7 @@ import {Header as HeaderDashboard} from "../../../../Components/Dashboard/Compon
 
 
 export const Pesanan = () => {
+    document.title = 'Pesanan | Dashboard'
     return (
         <>
             <div className={css.container_pesanan}>

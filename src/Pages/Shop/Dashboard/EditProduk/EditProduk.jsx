@@ -5,7 +5,8 @@ import Content from "../../../../Components/Dashboard/EditProduk/Content"
 import { useParams } from "react-router-dom";
 
 export const EditProduk = () => {
-    const params = useParams()
+  document.title = 'Pesanan | Dashboard'
+  const params = useParams()
   return (
     <>
       <div className={css.container_edit_toko}>

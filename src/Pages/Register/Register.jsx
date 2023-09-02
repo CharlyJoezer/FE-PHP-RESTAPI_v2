@@ -7,6 +7,7 @@ import { Cookie } from "../../Auth/Cookies";
 import { useEffect } from "react";
 
 const Register = () => {
+  document.title = "Register | Itemku";
   const getToken = Cookie('itemku_token')
   const navigate = useNavigate()
 

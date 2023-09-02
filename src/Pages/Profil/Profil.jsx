@@ -11,9 +11,9 @@ import ErrorPage from "../../Pages/Errors/ErrorPage"
 import ModalEditProfil from "../../Components/Profil/ModalEditProfil"
 
 const Profil = () => {
-    document.title = 'Profil'
     const token = Cookie('itemku_token')
     const [user, setDataUser] = useState([])
+    document.title = (user.username) ? user.username+' | Profil' : 'Profil'
     const [loading, setLoading] = useState(true)
     const [auth, setAuth] = useState(false)
     const [errorRequest = {

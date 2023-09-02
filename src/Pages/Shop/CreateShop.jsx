@@ -10,6 +10,7 @@ import BASEURL from "../../Utils/baseURL"
 import ErrorPage from "../../Pages/Errors/ErrorPage"
 
 const CreateShop = () => {
+  document.title = 'Buat Tokoku | Dashboard'
   const [auth, setAuth] = useState(false)
   const [loading, setLoading] = useState(true)
   const [errorRequest, setErrorRequest] = useState([])

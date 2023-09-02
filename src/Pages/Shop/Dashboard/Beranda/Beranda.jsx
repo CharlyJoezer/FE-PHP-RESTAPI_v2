@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ErrorPage from "../../../Errors/ErrorPage.jsx";
 
 export const Beranda = () => {
+  document.title = 'Beranda | Dashboard'
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [

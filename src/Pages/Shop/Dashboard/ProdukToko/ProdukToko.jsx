@@ -10,6 +10,7 @@ import Loading from "../../../../Components/Loading/Loading"
 import { useNavigate } from "react-router-dom"
 
 export const ProdukToko = () =>{
+    document.title = 'Produk | Dashboard'
     const [product, setProduct] = useState([])
     const [errorRequest = {
         show: false,

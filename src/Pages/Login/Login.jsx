@@ -7,6 +7,7 @@ import { Cookie } from "../../Auth/Cookies"
 import { useEffect, useState } from "react";
 
 const Login = () => {
+  document.title = "Login | Itemku";
   const getToken = Cookie('itemku_token')
   const navigate = useNavigate()
 

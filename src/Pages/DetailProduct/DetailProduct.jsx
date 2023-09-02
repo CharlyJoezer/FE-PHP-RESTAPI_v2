@@ -11,6 +11,7 @@ import ErrorPage from "../Errors/ErrorPage"
 const DetailProduk = () => {
   const params = useParams()
   const [product, setProduct] = useState({})
+  document.title = (product.nama_produk) ? product.nama_produk+' | Itemku' : 'Memuat...'
   const [loading, setLoading] = useState(true)
   const [errorRequest = {
     show:false,

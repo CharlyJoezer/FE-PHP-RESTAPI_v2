@@ -11,6 +11,7 @@ import ErrorPage from "../../../Errors/ErrorPage";
 import Loading from "../../../../Components/Loading/Loading";
 
 export const ProfilToko = () => {
+    document.title = 'Profil | Dashboard'
     const [profilShop, setProfilShop] = useState([])
     const [errorPage = {
         show: false,

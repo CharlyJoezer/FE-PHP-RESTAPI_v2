@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Cookie } from "../../../../Auth/Cookies";
 
 export const Lainnya = () => {
+  document.title = 'Lainnya | Dashboard'
   const [loading, setLoading] = useState(true);
   const [dataShop, setDataShop] = useState([]);
   const arrowIcon = (
