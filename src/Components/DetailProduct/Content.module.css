@@ -78,7 +78,7 @@
 }
 .shop_about_wrapper .header{
     font-size: 14px;
-    font-weight: 500;
+    font-weight: bold;
     margin-bottom: 8px;
     color: #333;
 }
@@ -94,6 +94,8 @@
 .shop_about img {
     border-radius: 50%;
     width: 45px;
+    height: 45px;
+    border: 1px solid #ccc;
 }
 .shop_profil_name{
     font-size: 14px;
