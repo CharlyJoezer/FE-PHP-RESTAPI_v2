@@ -26,6 +26,6 @@
     background-color: #eee;
     transition: 0.2s; 
 }
-.link_item svg{
-    width: 20px;
+.link_item img{
+    width: 15px;
 }
