@@ -3,6 +3,7 @@ import {Cookie} from "../../Auth/Cookies.js"
 import {deleteCookies} from "../../Auth/deleteCookies.js"
 import { useNavigate } from "react-router-dom";
 import ErrorPage from "../../Pages/Errors/ErrorPage.jsx";
+import BASEURL from "../../Utils/baseURL.js";
 
 const Logout = () => {
     const token = Cookie('itemku_token')
@@ -15,7 +16,7 @@ const Logout = () => {
     useEffect(function(){
         async function getLogout(){
             try{
-                const url = "http://127.0.0.1:8000/api/auth/logout"
+                const url = BASEURL()+"/api/auth/logout"
                 const request = await fetch(url, {
                     method : "POST",
                     headers : {
