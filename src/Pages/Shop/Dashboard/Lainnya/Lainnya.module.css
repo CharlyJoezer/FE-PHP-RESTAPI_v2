@@ -1,3 +1,51 @@
+.profil_shop{
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    padding: 10px 8px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.profil_shop img{
+    width: 50px!important;
+    height: 50px!important;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+.profil_shop .biodata_shop{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 10px;
+}
+.profil_shop .biodata_shop .biodata{
+    display: flex;
+    flex-direction: column;
+}
+.biodata_shop .biodata .name_shop{
+    font-size: 16px;
+    font-weight: bold;
+}
+.biodata_shop .biodata .status_shop{
+    font-size: 11px;
+}
+.biodata_shop .logout_action{
+    color: rgb(0, 128, 255);
+    font-weight: bold;
+    font-size: 15px;
+    padding-top: 5px;
+    text-decoration: none;
+}
+.header_list_link{
+    padding-top: 8px;
+    padding-left: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
 .list_link{
     display: flex;
     flex-direction: column;
