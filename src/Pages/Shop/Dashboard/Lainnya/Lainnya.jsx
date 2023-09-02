@@ -1,10 +1,11 @@
 import Navbar_Dashboard from "../../../../Components/Navbar_Dashboard/Navbar_Dashboard";
 import css from "./Lainnya.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BASEURL from "../../../../Utils/baseURL"
 import Loading from "../../../../Components/Loading/Loading";
 import { useState, useEffect } from "react";
 import { Cookie } from "../../../../Auth/Cookies";
+import Popup from "../../../../Components/Popup/Popup";
 
 export const Lainnya = () => {
   document.title = 'Lainnya | Dashboard'
@@ -13,27 +14,43 @@ export const Lainnya = () => {
   const arrowIcon = (
     <img src="/assets/icon/arrow_right.png" alt="arrow_right" />
   );
+  const navigate = useNavigate()
+  const [popup = {
+    show:true,
+    status:null,
+    message:null,
+    refresh:null,
+  }, setPopup] = useState([])
   useEffect(()=>{
     (async()=>{
-      const token = Cookie('itemku_token')
-      const url = BASEURL()+'/api/shop/dashboard/profil-toko'
-      const request = await fetch(url, {
-        method: 'GET',
-        headers: {
-          Authorization: token,
-        },
-      })
-
-      const response = await request.json()
-      if(request.status === 200){
-        setDataShop(response.data)
-        setLoading(false)
+      try{
+        const token = Cookie('itemku_token')
+        const url = BASEURL()+'/api/shop/dashboard/profil-toko'
+        const request = await fetch(url, {
+          method: 'GET',
+          headers: {
+            Authorization: token,
+          },
+        })
+  
+        const response = await request.json()
+        if(request.status === 200){
+          setDataShop(response.data)
+          setLoading(false)
+        }else if(request.status === 403){
+          navigate('/login')
+        }else if(request.status === 500){
+          throw new Error();
+        }
+      }catch(Error){
+        setPopup({show:true, status:'Failed', message:'Terjadi Kesalahan'})
       }
     })()
   }, [])
   return (
     <>
       {loading && <Loading />}
+      {popup.show && <Popup status={popup.status} message={popup.message} />}
       <div className={css.container_lainnya}>
         <div className={css.profil_shop}>
           <img src={BASEURL()+'/api/image/shop/'+dataShop.image} alt="image_shop" />
