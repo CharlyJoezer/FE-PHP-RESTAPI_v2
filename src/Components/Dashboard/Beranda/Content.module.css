@@ -34,6 +34,7 @@
     width: 43px;
     height: 43px;
     border-radius: 50%;
+    object-fit: cover;
 }
 .shop_about_data{
     padding-left: 8px;
