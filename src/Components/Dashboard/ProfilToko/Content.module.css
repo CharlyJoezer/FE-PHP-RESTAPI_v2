@@ -34,16 +34,17 @@
     border-radius: 50%;
 }
 .biodata_shop{
-    padding-left: 18px;
+    padding-left: 10px;
 }
 .biodata_shop .name_shop{
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     color: #333;
 }
 .status_shop{
-    font-size: 12px;
+    font-size: 11px;
     margin-bottom: 5px;
+    color: #555;
 }
 .save_edit_btn{
     background-color: #307FE2;
