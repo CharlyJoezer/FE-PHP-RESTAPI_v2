@@ -16,6 +16,7 @@ import {PengaturanToko as DashboardPengaturanToko} from "./Pages/Shop/Dashboard/
 import {ProdukToko as DashboardProdukToko} from "./Pages/Shop/Dashboard/ProdukToko/ProdukToko.jsx";
 import {EditProduk as DashboardEditProduk} from "./Pages/Shop/Dashboard/EditProduk/EditProduk.jsx";
 import Cart from "./Pages/Cart/Cart.jsx"
+import Search from "./Pages/Search/Search.jsx";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/shop/dashboard/produk-toko" element={<DashboardProdukToko />} />
           <Route path="/shop/dashboard/produk/edit/:slug" element={<DashboardEditProduk />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/search/:query_search" element={<Search />}/>
         </Routes>
       </Router>
     </>

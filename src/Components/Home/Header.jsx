@@ -1,7 +1,10 @@
+import { useRef } from "react"
 import css from "../Home/Header.module.css"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 
 const Header = () => {
+    const navigate = useNavigate()
+    const inputSearchHeader = useRef();
     return (
         <>
             <div className={css.header_wrapper}>
@@ -17,8 +20,29 @@ const Header = () => {
                     </div>
                 </div>
                 <div className={css.input_search}>
-                    <input type="text" placeholder="Cari Produk"/>
-                    <img src="assets/icon/search-icon.png" alt="" />
+                    <input 
+                        type="text" 
+                        placeholder="Cari Produk"
+                        ref={inputSearchHeader}
+                        onKeyDown={(e)=>{
+                            if(e.key === 'Enter'){
+                                if(e.target.value.length > 0){
+                                    const filterSearch = e.target.value.replace(/ /g, "-");
+                                    navigate('/search/'+filterSearch)
+                                }
+                            }
+                        }}
+                    />
+                    <img src="assets/icon/search-icon.png" alt="search-icon"
+                        onClick={()=>{
+                            const getInput = inputSearchHeader
+                            const inputValue = getInput.current.value
+                            if(inputValue.length > 0){
+                                const filterSearch = inputValue.replace(/ /g, "-");
+                                navigate('/search/'+filterSearch)
+                            }
+                        }}
+                    />
                 </div>
             </div>
         </>
