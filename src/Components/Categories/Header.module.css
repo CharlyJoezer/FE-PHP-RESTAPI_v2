@@ -1,0 +1,36 @@
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+  background-color: white;
+}
+.back_btn {
+  width: 30px;
+  height: 100%;
+  object-fit: contain;
+  padding: 0px 15px;
+  border-right: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+.back_btn:hover {
+  background-color: rgba(0, 0, 0, 0.125);
+  opacity: 1;
+}
+.product_name {
+  margin-left: 15px;
+  color: black;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.1;
+}
+@media (max-width: 550px) {
+  .product_name {
+    font-size: 15px;
+  }
+}

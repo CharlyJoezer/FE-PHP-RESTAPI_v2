@@ -6,7 +6,7 @@ const Category = () => {
     <div className={css.categories_wrapper}>
       <h1 className={css.categories_main_text}>Tentukan Kategori</h1>
       <div className={css.categories}>
-        <Link className={css.category_item}>
+        <Link className={css.category_item} to={'/category/mobile-game'}>
           <img src="assets/icon/mobile-game.png" alt="mobile-gaming" />
           <span className={css.category_name}>Mobile Game</span>
         </Link>
