@@ -10,7 +10,7 @@ const Sub_Categories = () => {
     return (
         <>
             <div className={css.container_sub_categories}>
-                <Header name_sub_category={params.name_sub_category} category={params.name_category}/>
+                {/* <Header name_sub_category={params.name_sub_category} category={params.name_category}/> */}
                 <Content category={params.name_category} name_sub_category={params.name_sub_category} name_type_category={params.typeCategory}/>
             </div>
             <Navbar />

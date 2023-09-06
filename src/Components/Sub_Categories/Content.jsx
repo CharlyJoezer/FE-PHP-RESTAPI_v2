@@ -78,6 +78,49 @@ const Content = (props) => {
       ) : errorPage.show ? (
         <ErrorPage code={errorPage.code} />
       ) : (
+        <>
+          <div className={css.container_header}>
+                <div className={css.back_button} onClick={()=>{
+                    window.location = `/category/${category}`
+                }}>
+                    <img src="/assets/icon/arrow_left.png" alt="arrow-left" />
+                </div>
+                <div className={css.input_search}>
+                    <input
+                        type="text" 
+                        name="search" 
+                        placeholder={'Cari Produk '+name_sub_category.replace(/-/g, ' ')} 
+                        onKeyDown={(e)=>{
+                          const search = e.target.value                              
+                            if(e.key === 'Enter' && search.length > 0){
+                              (async()=>{
+                                  try{
+                                        setProductLoad(true)
+                                        const url = BASEURL()+`/api/search/${search}?sub_category=${name_sub_category}&type=${name_type_category}`
+                                        const request = await fetch(url, {
+                                            method: 'GET',
+                                        })
+                                        if(request.status === 200){
+                                            const response = await request.json();
+                                            setProduct(response.data.data)
+                                            setProductLoad(false)
+                                          }else if(request.status === 404){
+                                            setErrorPage({ show: true, code: '404' });
+                                          }else{
+                                            throw new Error()
+                                        }
+                                    }catch(error){
+                                        setErrorPage({ show: true, code: '500' });
+                                    }
+                                })()
+                            }
+                        }}    
+                    />
+                </div>
+                <Link to={'/cart'} className={css.cart_link}>
+                    <img src="/assets/icon/cart-icon.png" alt="cart-icon" />
+                </Link>
+          </div>
         <div className={css.container_content}>
           <div className={css.list_type_sub_category}>
             <Link
@@ -138,6 +181,7 @@ const Content = (props) => {
             }
             
         </div>
+        </>
       )}
     </>
   );
