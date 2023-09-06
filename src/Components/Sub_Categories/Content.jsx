@@ -9,7 +9,8 @@ import { toRupiah } from "../../Utils/toRupiahFormat";
 
 const Content = (props) => {
   const { category, name_sub_category, name_type_category } = props;
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [productLoad, setProductLoad] = useState(true)
   const [
     errorPage = {
       show: false,
@@ -50,19 +51,23 @@ const Content = (props) => {
   useEffect(() => {
     (async () => {
       try {
+        setProductLoad(true)
         const url = BASEURL()+`/api/sub_categories/${name_sub_category}/?type=${name_type_category}`;
         const request = await fetch(url, {
           method: "GET",
         });
         if (request.status === 200) {
           const response = await request.json();
+          setProductLoad(false)
           setProduct(response.data)
         } else if (request.status === 404) {
+          setProductLoad(false)
           setErrorPage({ show: true, code: '404' });
         } else {
           throw new Error;
         }
-      } catch (error) {;
+      } catch (error) {
+        setProductLoad(false)
         setErrorPage({ show: true, code: '500' });
       }
     })();
@@ -100,34 +105,39 @@ const Content = (props) => {
           </div>
           <div className={css.list_product}>
             {
-              products.map((product)=>{
-                return (
-                <Link to={'/product/'+product.slug} className={css.product} key={product.slug}>
-                  <img
-                    className={css.product_image}
-                    src={BASEURL()+'/api/image/product/'+product.gambar_produk}
-                    alt={product.nama_produk}
-                  />
-                  <div className={css.product_desc}>
-                    <span className={css.product_name}>{product.nama_produk}</span>
-                    <span className={css.product_price}>Rp {toRupiah(product.harga_produk.toString())}</span>
-                    <span className={css.product_category}>{product.kategori_produk}</span>
-                    <span className={css.name_shop_product}>
-                      <img src="/assets/icon/shops.png" alt="shops" />
-                      <span>{product.nama_toko}</span>
-                    </span>
-                  </div>
-                </Link>
-                )
-              })
+              !productLoad &&
+                products.map((product)=>{
+                  return (
+                  <Link to={'/product/'+product.slug} className={css.product} key={product.slug}>
+                    <img
+                      className={css.product_image}
+                      src={BASEURL()+'/api/image/product/'+product.gambar_produk}
+                      alt={product.nama_produk}
+                    />
+                    <div className={css.product_desc}>
+                      <span className={css.product_name}>{product.nama_produk}</span>
+                      <span className={css.product_price}>Rp {toRupiah(product.harga_produk.toString())}</span>
+                      <span className={css.product_category}>{product.kategori_produk}</span>
+                      <span className={css.name_shop_product}>
+                        <img src="/assets/icon/shops.png" alt="shops" />
+                        <span>{product.nama_toko}</span>
+                      </span>
+                    </div>
+                  </Link>
+                  )
+                })
             }
           </div>
-            {(products.length <= 0) &&
-              <div className={css.product_not_found}>
-                  <img src="/assets/image/search_not_found.jpg" alt="not-found" />
-                  <span>Kategori / Tipe ini belum memiliki produk!</span>
-              </div>
+            { productLoad ? 
+                <div style={{textAlign:'center'}}>Memuat...</div> 
+              :
+                products.length <= 0 &&
+                <div className={css.product_not_found}>
+                    <img src="/assets/image/search_not_found.jpg" alt="not-found" />
+                    <span>Kategori / Tipe ini belum memiliki produk!</span>
+                </div>
             }
+            
         </div>
       )}
     </>
