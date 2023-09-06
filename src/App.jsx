@@ -18,6 +18,7 @@ import {EditProduk as DashboardEditProduk} from "./Pages/Shop/Dashboard/EditProd
 import Cart from "./Pages/Cart/Cart.jsx"
 import Search from "./Pages/Search/Search.jsx";
 import Categories from "./Pages/Categories/Categories.jsx"
+import Sub_Categories from "./Pages/Sub_Categories/Sub_Categories.jsx"
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/search/:query_search" element={<Search />}/>
           <Route path="/category/:name_category" element={<Categories />}/>
+          <Route path="/category/:name_category/:name_sub_category/:typeCategory" element={<Sub_Categories />}/>
         </Routes>
       </Router>
     </>

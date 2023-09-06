@@ -1,0 +1,43 @@
+.container_header {
+  height: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+.back_button {
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.back_button img {
+  width: 28px;
+  height: 28px;
+}
+.input_search {
+  display: flex;
+  align-items: center;
+  width: 600px;
+}
+.input_search input {
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+}
+.cart_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  padding: 0px 10px;
+}
+.cart_link img {
+  width: 25px;
+  height: 25px;
+}

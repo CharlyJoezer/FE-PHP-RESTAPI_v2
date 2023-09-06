@@ -63,7 +63,7 @@ const Categories = () => {
         :
             <div className={css.container_categories}>
                 <Header name_category={categories.name_category} />
-                <Content list_sub_category={categories.list_sub_category} />
+                <Content list_sub_category={categories.list_sub_category} category={params.name_category}/>
             </div>
       )}
     </>
