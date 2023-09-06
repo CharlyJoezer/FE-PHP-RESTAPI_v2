@@ -4,7 +4,6 @@ import css from "./Content.module.css";
 import BASEURL from "../../Utils/baseURL";
 import Loading from "../Loading/Loading";
 import ErrorPage from "../../Pages/Errors/ErrorPage";
-import Popup from "../Popup/Popup";
 import { toRupiah } from "../../Utils/toRupiahFormat";
 
 const Content = (props) => {
