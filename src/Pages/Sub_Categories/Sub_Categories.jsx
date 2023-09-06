@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 
 const Sub_Categories = () => {
     const params = useParams()
+    document.title = params.name_sub_category.charAt(0).toUpperCase() + params.name_sub_category.slice(1) + ' | Itemku'
     return (
         <>
             <div className={css.container_sub_categories}>
