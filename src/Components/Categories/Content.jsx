@@ -13,8 +13,10 @@ const Content = (props) =>{
                 {
                     list_sub_category.map((i)=>{
                         return (
-                            <>
-                                <Link className={css.box_sub_category} to={`/category/${category.toLowerCase()}/${i.name.toLowerCase().replace(/ /g, '-')}/all`}>
+                                <Link className={css.box_sub_category} 
+                                to={`/category/${category.toLowerCase()}/${i.name.toLowerCase().replace(/ /g, '-')}/all`}
+                                key={i.name}
+                                >
                                     <div className={css.wrapper_image}>
                                         <img src={BASEURL()+'/api/image/sub_categories/'+i.image} alt="" />
                                     </div>
@@ -22,7 +24,6 @@ const Content = (props) =>{
                                         {i.name}
                                     </div>
                                 </Link>
-                            </>
                         )
                     })
                 }

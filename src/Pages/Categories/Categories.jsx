@@ -10,6 +10,9 @@ import ErrorPage from "../../Pages/Errors/ErrorPage"
 
 const Categories = () => {
   const params = useParams();
+  const title = params.name_category.replace(/-/g,' ')
+  document.title = title.charAt(0).toUpperCase() + title.slice(1)+' | Itemku'
+
   const [categories, setCategories] = useState();
   const [loading, setLoading] = useState(true);
   const [
