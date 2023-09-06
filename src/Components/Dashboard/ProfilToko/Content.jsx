@@ -2,23 +2,26 @@ import { useRef, useState } from "react";
 import css from "./Content.module.css";
 import BASEURL from "../../../Utils/baseURL";
 import { Cookie } from "../../../Auth/Cookies";
-import Loading from "../../Loading/Loading"
-import Popup from "../../Popup/Popup"
+import Loading from "../../Loading/Loading";
+import Popup from "../../Popup/Popup";
 
 export const Content = (props) => {
-  const dataShop = props.data
+  const dataShop = props.data;
   const inputFile = useRef(null);
   const imageShop = useRef(null);
   const [isImageChange, setIsImageChange] = useState(false);
-  const [loading, setLoading] = useState(false)
-  const [popup = {
-    show: false,
-    status: null,
-    message: null,
-    refresh: false
-  }, setPopup] = useState([])
+  const [loading, setLoading] = useState(false);
+  const [
+    popup = {
+      show: false,
+      status: null,
+      message: null,
+      refresh: false,
+    },
+    setPopup,
+  ] = useState([]);
 
-  function handleClickChangeImage(){
+  function handleClickChangeImage() {
     const input = inputFile.current;
     input.click();
   }
@@ -34,7 +37,7 @@ export const Content = (props) => {
               ref={imageShop}
               onClick={handleClickChangeImage}
               className={css.image_shop}
-              src={BASEURL()+'/api/image/shop/'+dataShop.image}
+              src={BASEURL() + "/api/image/shop/" + dataShop.image}
               alt="profil-toko"
             />
             <svg
@@ -69,54 +72,72 @@ export const Content = (props) => {
           </div>
           <div className={css.biodata_shop}>
             <div className={css.name_shop}>{dataShop.name}</div>
-            <div className={css.status_shop}>Status Toko : {dataShop.status}</div>
+            <div className={css.status_shop}>
+              Status Toko : {dataShop.status}
+            </div>
           </div>
         </div>
-        <form className={css.form_image_shop} onSubmit={(e)=>{
-          e.preventDefault();
-          setLoading(true)
-          setPopup({show: false, status: null, message: null})
-          const data = Object.fromEntries(
-            new FormData(e.target).entries()
-          );
-          (async () => {
-            try{
-              const token = Cookie('itemku_token')
-              const url = BASEURL()+'/api/shop/dashboard/profil-toko?_method=PATCH'
-              const formData = new FormData()
-              formData.append('image_shop', data['image_shop'])
-              const request = await fetch(url, {
-                method : "POST",
-                headers : {
-                  'Authorization' : token
-                },
-                body : formData
-              })
+        <form
+          className={css.form_image_shop}
+          onSubmit={(e) => {
+            e.preventDefault();
+            setLoading(true);
+            setPopup({ show: false, status: null, message: null });
+            const data = Object.fromEntries(new FormData(e.target).entries());
+            (async () => {
+              try {
+                const token = Cookie("itemku_token");
+                const url =
+                  BASEURL() + "/api/shop/dashboard/profil-toko?_method=PATCH";
+                const formData = new FormData();
+                formData.append("image_shop", data["image_shop"]);
+                const request = await fetch(url, {
+                  method: "POST",
+                  headers: {
+                    Authorization: token,
+                  },
+                  body: formData,
+                });
 
-              const response = await request.json()
-              if(request.status === 200){
-                setLoading(false)
-                setPopup({show: true, status: 'Success', message: 'Profil diperbarui!'})
-                setIsImageChange(false);
-              }else if(request.status === 400){
-                setLoading(false)
-                const errorMsg = response['data']['image_shop'][0]
-                if(response['data']['image_shop'].length > 0){
-                  setPopup({show: true, status: 'Failed', message: errorMsg})
-                }else{
-                  setPopup({show: true, status: 'Failed', message: 'Gagal memperbarui Profil!'})
+                const response = await request.json();
+                if (request.status === 200) {
+                  setLoading(false);
+                  setPopup({
+                    show: true,
+                    status: "Success",
+                    message: "Profil diperbarui!",
+                  });
+                  setIsImageChange(false);
+                } else if (request.status === 400) {
+                  setLoading(false);
+                  const errorMsg = response["data"]["image_shop"][0];
+                  if (response["data"]["image_shop"].length > 0) {
+                    setPopup({
+                      show: true,
+                      status: "Failed",
+                      message: errorMsg,
+                    });
+                  } else {
+                    setPopup({
+                      show: true,
+                      status: "Failed",
+                      message: "Gagal memperbarui Profil!",
+                    });
+                  }
+                } else if (request.status === 500) {
+                  setLoading(false);
+                  throw new Error();
                 }
-              }else if(request.status === 500){
-                setLoading(false)
-                throw new Error()
+              } catch (error) {
+                setPopup({
+                  show: true,
+                  status: "Failed",
+                  message: "Server sedang bermasalah!",
+                });
               }
-
-            }catch(error){
-              setPopup({show: true, status: 'Failed', message: 'Server sedang bermasalah!'})
-            }
-          })()
-
-        }}>
+            })();
+          }}
+        >
           <input
             type="file"
             ref={inputFile}
@@ -127,9 +148,9 @@ export const Content = (props) => {
               setIsImageChange(true);
               if (selectedFile) {
                 const reader = new FileReader();
-                const preview = imageShop.current
+                const preview = imageShop.current;
                 reader.onload = function () {
-                    preview.src = reader.result
+                  preview.src = reader.result;
                 };
 
                 reader.readAsDataURL(selectedFile);

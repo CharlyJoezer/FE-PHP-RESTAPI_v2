@@ -2,29 +2,32 @@ import { useNavigate, Link } from "react-router-dom";
 import css from "../Register/Content.module.css";
 import { useState } from "react";
 import Loading from "../Loading/Loading";
-import BASEURL from "../../Utils/baseURL"
-import ErrorPage from "../../Pages/Errors/ErrorPage"
+import BASEURL from "../../Utils/baseURL";
+import ErrorPage from "../../Pages/Errors/ErrorPage";
 
 const Content = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState([]);
-  const [errorRequest = {
-    show : false,
-    code : null
-  }, setErrorRequest] = useState([])
+  const [
+    errorRequest = {
+      show: false,
+      code: null,
+    },
+    setErrorRequest,
+  ] = useState([]);
   const navigate = useNavigate();
 
   async function storeRegister(data) {
-    try{
+    try {
       setLoading(true);
       document.body.style.overflow = "hidden";
-  
+
       const formData = new URLSearchParams();
       for (const [key, value] of Object.entries(data)) {
         formData.append(key, value);
       }
-  
-      const url = BASEURL()+"/api/auth/register";
+
+      const url = BASEURL() + "/api/auth/register";
       const request = await fetch(url, {
         method: "POST",
         headers: {
@@ -32,28 +35,31 @@ const Content = () => {
         },
         body: formData.toString(),
       });
-  
+
       const response = await request.json();
-  
+
       if (request.status === 201) {
         navigate("/login");
       } else if (request.status === 422) {
         setLoading(false);
         setError(response.errors);
         document.body.style.overflow = "auto";
-      }else{
-        throw new Error("500")
+      } else {
+        throw new Error("500");
       }
-    }catch(error){
-      setErrorRequest({show : true, code : isNaN(error.message) ? "500" : error.message})
+    } catch (error) {
+      setErrorRequest({
+        show: true,
+        code: isNaN(error.message) ? "500" : error.message,
+      });
     }
   }
 
   return (
     <>
-      {errorRequest.show ? 
+      {errorRequest.show ? (
         <ErrorPage code={errorRequest.code} />
-        :
+      ) : (
         <>
           {loading && <Loading />}
           <div className={css.content_wrapper}>
@@ -122,8 +128,8 @@ const Content = () => {
               </div>
             </div>
           </div>
-        </>  
-      }
+        </>
+      )}
     </>
   );
 };

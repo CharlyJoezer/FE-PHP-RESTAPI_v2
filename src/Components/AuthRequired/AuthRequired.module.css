@@ -27,8 +27,8 @@
 .login_btn:hover {
   background-color: rgb(14, 110, 184);
 }
-@media (max-width: 295px){
-  .login_btn{
+@media (max-width: 295px) {
+  .login_btn {
     width: 90%;
   }
   .AuthRequired img {

@@ -1,7 +1,7 @@
 import BASEURL from "../../Utils/baseURL";
 import css from "./Content.module.css";
 import { Link } from "react-router-dom";
-import {toRupiah} from "../../Utils/toRupiahFormat"
+import { toRupiah } from "../../Utils/toRupiahFormat";
 
 const Content = (props) => {
   const product = props.product;
@@ -10,7 +10,7 @@ const Content = (props) => {
       <div className={css.container_content}>
         <div className={css.product_image}>
           <img
-            src={BASEURL()+'/api/image/product/'+product.gambar_produk}
+            src={BASEURL() + "/api/image/product/" + product.gambar_produk}
             alt="test"
           />
         </div>
@@ -18,22 +18,32 @@ const Content = (props) => {
           <div className={css.product_name}>{product.nama_produk}</div>
           <div className={css.product_category}>{product.kategori_produk}</div>
           <div className={css.product_price}>
-            Rp {toRupiah(product.harga_produk.toString())} <span>/ 1 {product.tipe_kategori_produk}</span>
+            Rp {toRupiah(product.harga_produk.toString())}{" "}
+            <span>/ 1 {product.tipe_kategori_produk}</span>
           </div>
 
           <div className={css.product_statistic}>
             <div className={css.statistic_item}>
-              <img src="/assets/icon/min_pembelian.png" alt="minimal_pembelian" />
+              <img
+                src="/assets/icon/min_pembelian.png"
+                alt="minimal_pembelian"
+              />
               <div>Minimal Pembelian</div>
               <span>{product.min_pembelian}</span>
             </div>
             <div className={css.statistic_item}>
-              <img src="/assets/icon/transaction_success.png" alt="transaction_success" />
+              <img
+                src="/assets/icon/transaction_success.png"
+                alt="transaction_success"
+              />
               <div>Transaksi Sukses</div>
               <span>{product.transaksi_berhasil}</span>
             </div>
             <div className={css.statistic_item}>
-              <img src="/assets/icon/duration_transaction.png" alt="duration_transaction" />
+              <img
+                src="/assets/icon/duration_transaction.png"
+                alt="duration_transaction"
+              />
               <div>Waktu Pengiriman</div>
               <span>{product.durasi_transaksi}</span>
             </div>
@@ -45,7 +55,7 @@ const Content = (props) => {
             <div className={css.header}>Profil Toko</div>
             <Link className={css.shop_about}>
               <img
-                src={BASEURL()+'/api/image/shop/'+product.gambar_toko}
+                src={BASEURL() + "/api/image/shop/" + product.gambar_toko}
                 alt="shop"
               />
               <div className={css.shop_profil}>
@@ -61,9 +71,7 @@ const Content = (props) => {
 
           <div className={css.product_desc}>
             <div className={css.desc_header}>Deskripsi Produk</div>
-            <div className={css.desc_content}>
-              {product.desk_produk}
-            </div>
+            <div className={css.desc_content}>{product.desk_produk}</div>
           </div>
         </div>
       </div>

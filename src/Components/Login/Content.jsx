@@ -2,30 +2,33 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import css from "../Login/Content.module.css";
 import Loading from "../Loading/Loading";
-import BASEURL from "../../Utils/baseURL"
-import ErrorPage from "../../Pages/Errors/ErrorPage"
+import BASEURL from "../../Utils/baseURL";
+import ErrorPage from "../../Pages/Errors/ErrorPage";
 
 const Content = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState([])
-  const [errorRequest = {
-    show : false,
-    code : null
-  }, setErrorRequest] = useState([]);
+  const [error, setError] = useState([]);
+  const [
+    errorRequest = {
+      show: false,
+      code: null,
+    },
+    setErrorRequest,
+  ] = useState([]);
   const navigate = useNavigate();
 
   async function storeLogin(data) {
-    try{
+    try {
       setLoading(true);
 
       document.body.style.overflow = "hidden";
-  
+
       const formData = new URLSearchParams();
       for (const [key, value] of Object.entries(data)) {
         formData.append(key, value);
       }
-  
-      const url = BASEURL()+"/api/auth/login";
+
+      const url = BASEURL() + "/api/auth/login";
       const request = await fetch(url, {
         method: "POST",
         headers: {
@@ -34,35 +37,36 @@ const Content = () => {
         body: formData.toString(),
       });
       const response = await request.json();
-  
+
       if (request.status === 201) {
         const token = response.token;
         setCookie("itemku_token", token, 60);
         navigate("/");
         document.body.style.overflow = "auto";
       }
-  
+
       if (request.status === 422) {
         setLoading(false);
         setError(response.errors);
         document.body.style.overflow = "auto";
       }
-  
+
       if (request.status === 404) {
         setLoading(false);
         setError({ message: response.errors });
         document.body.style.overflow = "auto";
       }
 
-      if(request.status === 500){
-        throw new Error('500')
+      if (request.status === 500) {
+        throw new Error("500");
       }
-
-    }catch(error){
+    } catch (error) {
       setLoading(false);
-      setErrorRequest({show : true, code : isNaN(error.message) ? '500' : error.message})  
+      setErrorRequest({
+        show: true,
+        code: isNaN(error.message) ? "500" : error.message,
+      });
     }
-    
   }
 
   function setCookie(name, value, minute) {
@@ -74,10 +78,9 @@ const Content = () => {
 
   return (
     <>
-      {errorRequest.show ? 
-        <ErrorPage code={errorRequest.code}/>
-
-        :
+      {errorRequest.show ? (
+        <ErrorPage code={errorRequest.code} />
+      ) : (
         <>
           {loading && <Loading />}
           <div className={css.content_wrapper}>
@@ -137,7 +140,7 @@ const Content = () => {
             </div>
           </div>
         </>
-      }
+      )}
     </>
   );
 };

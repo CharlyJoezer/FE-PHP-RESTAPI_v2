@@ -8,24 +8,24 @@ import { useEffect } from "react";
 
 const Register = () => {
   document.title = "Register | Itemku";
-  const getToken = Cookie('itemku_token')
-  const navigate = useNavigate()
+  const getToken = Cookie("itemku_token");
+  const navigate = useNavigate();
 
-  useEffect(function(){
-    if(getToken !== undefined){
-      navigate('/')
+  useEffect(function () {
+    if (getToken !== undefined) {
+      navigate("/");
     }
-  })
+  });
 
   return (
     <>
-      {getToken === undefined &&
+      {getToken === undefined && (
         <div className={css.container_register}>
           <Header />
           <Content />
           <Footer />
         </div>
-      }
+      )}
     </>
   );
 };

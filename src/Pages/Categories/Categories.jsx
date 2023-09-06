@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import BASEURL from "../../Utils/baseURL";
 import Loading from "../../Components/Loading/Loading";
 import Popup from "../../Components/Popup/Popup";
-import ErrorPage from "../../Pages/Errors/ErrorPage"
+import ErrorPage from "../../Pages/Errors/ErrorPage";
 
 const Categories = () => {
   const params = useParams();
-  const title = params.name_category.replace(/-/g,' ')
-  document.title = title.charAt(0).toUpperCase() + title.slice(1)+' | Itemku'
+  const title = params.name_category.replace(/-/g, " ");
+  document.title = title.charAt(0).toUpperCase() + title.slice(1) + " | Itemku";
 
   const [categories, setCategories] = useState();
   const [loading, setLoading] = useState(true);
@@ -23,10 +23,13 @@ const Categories = () => {
     },
     setPopup,
   ] = useState([]);
-  const [errorPage={
-    show:false,
-    code:null,
-  }, setErrorPage] = useState([])
+  const [
+    errorPage = {
+      show: false,
+      code: null,
+    },
+    setErrorPage,
+  ] = useState([]);
   useEffect(() => {
     (async () => {
       try {
@@ -41,8 +44,8 @@ const Categories = () => {
           setCategories(response.data);
           setLoading(false);
         } else if (request.status === 404) {
-            setErrorPage({show:true, code:'404'})
-            setLoading(false)
+          setErrorPage({ show: true, code: "404" });
+          setLoading(false);
         } else {
           throw new Error();
         }
@@ -60,14 +63,16 @@ const Categories = () => {
       {popup.show && <Popup status={popup.status} message={popup.message} />}
       {loading ? (
         <Loading />
+      ) : errorPage.show ? (
+        <ErrorPage code={errorPage.code} />
       ) : (
-        errorPage.show ? 
-            <ErrorPage code={errorPage.code}/>
-        :
-            <div className={css.container_categories}>
-                <Header name_category={categories.name_category} />
-                <Content list_sub_category={categories.list_sub_category} category={params.name_category}/>
-            </div>
+        <div className={css.container_categories}>
+          <Header name_category={categories.name_category} />
+          <Content
+            list_sub_category={categories.list_sub_category}
+            category={params.name_category}
+          />
+        </div>
       )}
     </>
   );

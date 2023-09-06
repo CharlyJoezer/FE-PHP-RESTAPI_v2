@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ErrorPage from "../../../Errors/ErrorPage.jsx";
 
 export const Beranda = () => {
-  document.title = 'Beranda | Dashboard'
+  document.title = "Beranda | Dashboard";
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [
@@ -41,11 +41,11 @@ export const Beranda = () => {
             setLoading(false);
             setData(response);
           } else if (request.status === 403) {
-            navigate('/login')
+            navigate("/login");
           } else if (request.status === 404) {
-            navigate('/shop/create')
-          }else{
-            throw new Error("500")
+            navigate("/shop/create");
+          } else {
+            throw new Error("500");
           }
         } catch (error) {
           setLoading(false);
@@ -60,21 +60,17 @@ export const Beranda = () => {
   }, []);
   return (
     <>
+      <div className={css.container_dashboard}>
+        {loading ? (
+          <Loading />
+        ) : error.show === true ? (
+          <ErrorPage code={error.code} />
+        ) : (
+          <Content data={data} />
+        )}
 
-        <div className={css.container_dashboard}>
-          {loading
-          ?
-            <Loading />
-          :
-            error.show === true
-            ?
-            <ErrorPage code={error.code}/>
-            :
-            <Content data={data} />
-          }
-
-          <Navbar_Dashboard />
-        </div>
+        <Navbar_Dashboard />
+      </div>
     </>
   );
 };

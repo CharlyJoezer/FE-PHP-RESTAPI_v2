@@ -59,10 +59,10 @@
 .input_username input:focus {
   border: 1px solid rgba(64, 172, 255, 0.687);
 }
-.error_input{
-  border: 1px solid red!important;
+.error_input {
+  border: 1px solid red !important;
 }
-.error_message{
+.error_message {
   color: red;
   width: 50%;
   margin: 0 auto;
@@ -106,7 +106,7 @@
   color: rgb(14, 110, 184);
   font-weight: 500;
 }
-@media (max-width: 520px){
+@media (max-width: 520px) {
   .text_header img {
     width: 200px;
   }
@@ -117,7 +117,7 @@
     padding: 5px 8px;
     height: 45px;
   }
-  .error_message{
+  .error_message {
     width: 290px;
   }
   .btn_submit button {

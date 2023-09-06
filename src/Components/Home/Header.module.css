@@ -41,31 +41,31 @@
   bottom: 0;
   opacity: 0.8;
 }
-.list_link{
-    display: flex;
+.list_link {
+  display: flex;
 }
 .link_item {
-    display: flex;
-    text-decoration: none;
-    align-items: center;
-    margin-left: 15px;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  margin-left: 15px;
 }
 .link_item svg {
-    width: 28px;
+  width: 28px;
 }
-.link_item_text{
-    color: white;
-    padding-left: 5px;
+.link_item_text {
+  color: white;
+  padding-left: 5px;
 }
 @media (max-width: 600px) {
-  .header_logo_and_link{
+  .header_logo_and_link {
     margin-bottom: 10px;
     padding-bottom: 5px;
   }
   .input_search input {
     padding: 10px;
   }
-  .link_item svg{
+  .link_item svg {
     width: 25px;
   }
 }

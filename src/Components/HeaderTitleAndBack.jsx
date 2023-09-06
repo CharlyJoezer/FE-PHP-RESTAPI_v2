@@ -1,7 +1,7 @@
-import {Link, useNavigate} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 
 const HeaderTitleAndBack = (props) => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -19,7 +19,7 @@ const HeaderTitleAndBack = (props) => {
           style={{
             cursor: "pointer",
           }}
-          onClick={()=>navigate(-1)}
+          onClick={() => navigate(-1)}
         >
           <svg
             style={{

@@ -257,7 +257,7 @@
 .confirm_form button:hover {
   background-color: #1d74df;
 }
-.error_message_input{
-  color: red!important;
-  font-size: 14px!important;
+.error_message_input {
+  color: red !important;
+  font-size: 14px !important;
 }

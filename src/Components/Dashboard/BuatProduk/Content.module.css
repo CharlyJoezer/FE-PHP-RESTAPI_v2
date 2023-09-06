@@ -1,4 +1,4 @@
-.container_content{
+.container_content {
   height: 100%;
   padding-bottom: 70px;
 }
@@ -101,24 +101,24 @@
 .list_item_type:hover {
   background-color: #eee;
 }
-.form_information_product{
+.form_information_product {
   margin-bottom: 15px;
 }
-.information_product_text{
+.information_product_text {
   font-weight: bold;
   font-size: 14px;
   margin-bottom: 10px;
 }
-.input_name_product{
+.input_name_product {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 }
-.input_name_product span{
+.input_name_product span {
   font-size: 13px;
   color: #333;
 }
-.input_name_product input{
+.input_name_product input {
   padding: 10px 0px;
   border: none;
   border-bottom: 2px solid #888;
@@ -128,10 +128,10 @@
   font-size: 15px;
   transition: 0.2s;
 }
-.input_name_product input:focus{
-  border-bottom: 2px solid #307FE2;
+.input_name_product input:focus {
+  border-bottom: 2px solid #307fe2;
 }
-.input_image_product{
+.input_image_product {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
@@ -152,71 +152,72 @@
   visibility: none;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('/assets/icon/upload_image.png');
+  background-image: url("/assets/icon/upload_image.png");
   transition: 0.2s;
 }
-.input_image_product .wrapper_input_file input[type='file']{
+.input_image_product .wrapper_input_file input[type="file"] {
   color: transparent;
 }
 ::file-selector-button {
   display: none;
 }
-.input_image_rules{
+.input_image_rules {
   font-size: 11px;
   color: #aaa;
   padding-top: 5px;
 }
-.desc_product_text{
+.desc_product_text {
   font-size: 13px;
   color: #333;
   margin-bottom: 5px;
 }
-.wrapper_input_desc textarea{
+.wrapper_input_desc textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 5px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   outline: none;
 }
-.form_information_stock_and_price{
+.form_information_stock_and_price {
   margin-bottom: 30px;
 }
-.information_stock_and_price_text{
+.information_stock_and_price_text {
   font-weight: bold;
   font-size: 14px;
   margin-bottom: 10px;
 }
-.input_price_product{
+.input_price_product {
   border-bottom: 2px solid #aaa;
 }
-.price_product_text{
+.price_product_text {
   font-size: 14px;
   color: #333;
 }
-.wrapper_input_price{
+.wrapper_input_price {
   display: flex;
   padding: 5px 0px;
 }
-.wrapper_input_price span{
+.wrapper_input_price span {
   font-size: 14px;
 }
-.wrapper_input_price input{
+.wrapper_input_price input {
   border: none;
   outline: none;
   box-sizing: border-box;
   width: 100%;
   font-size: 13px;
 }
-.input_stock_product{
+.input_stock_product {
   padding-top: 15px;
 }
-.stock_product_text{
+.stock_product_text {
   font-size: 14px;
   color: #333;
 }
-.wrapper_input_stock input{
+.wrapper_input_stock input {
   padding: 8px 0px;
   border: none;
   border-bottom: 2px solid #aaa;
@@ -226,14 +227,14 @@
   font-size: 13px;
   transition: 0.2s;
 }
-.input_min_order_product{
+.input_min_order_product {
   padding-top: 15px;
 }
-.min_order_product_text{
+.min_order_product_text {
   font-size: 14px;
   color: #333;
 }
-.wrapper_input_min_order input{
+.wrapper_input_min_order input {
   padding: 8px 0px;
   border: none;
   border-bottom: 2px solid #aaa;
@@ -243,22 +244,22 @@
   font-size: 13px;
   transition: 0.2s;
 }
-.confirm_form button{
+.confirm_form button {
   width: 100%;
   border: none;
   padding: 12px 0px;
   border-radius: 5px;
   font-size: 14px;
   color: white;
-  background-color: #307FE2;
+  background-color: #307fe2;
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
 }
-.confirm_form button:hover{
+.confirm_form button:hover {
   background-color: #1d74df;
 }
-.error_message_input{
-  color: red!important;
-  font-size: 14px!important;
+.error_message_input {
+  color: red !important;
+  font-size: 14px !important;
 }

@@ -10,13 +10,13 @@
   background-color: white;
   height: 55px;
 }
-.nav_list{
+.nav_list {
   width: 100%;
   box-sizing: border-box;
   display: flex;
   justify-content: space-evenly;
 }
-.nav_item{
+.nav_item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,10 +27,10 @@
   text-decoration: none;
   box-sizing: border-box;
 }
-.nav_item:hover{
+.nav_item:hover {
   background-color: #eee;
 }
-.nav_item svg{
+.nav_item svg {
   width: 20px;
   height: 20px;
   margin-bottom: 2px;
@@ -42,7 +42,7 @@
   font-weight: 500;
 }
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
   .navbar {
     width: 100%;
   }

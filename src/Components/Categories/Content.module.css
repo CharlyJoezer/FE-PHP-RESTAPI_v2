@@ -17,9 +17,9 @@
   background-color: white;
   position: relative;
 }
-.box_sub_category .wrapper_image{
-    height: 200px;
-    overflow: hidden;
+.box_sub_category .wrapper_image {
+  height: 200px;
+  overflow: hidden;
 }
 .box_sub_category .wrapper_image img {
   object-fit: cover;
@@ -46,5 +46,5 @@
 @media (max-width: 550px) {
   .list_sub_category {
     grid-template-columns: 1fr 1fr;
-    }
+  }
 }

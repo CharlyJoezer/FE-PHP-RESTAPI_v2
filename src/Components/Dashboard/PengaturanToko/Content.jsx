@@ -1,51 +1,62 @@
 import { useEffect, useState } from "react";
 import css from "./Content.module.css";
-import BASEURL from "../../../Utils/baseURL"
-import {Cookie} from "../../../Auth/Cookies"
-import Loading from "../../Loading/Loading"
-import Popup from "../../Popup/Popup"
-import {useNavigate} from "react-router-dom"
+import BASEURL from "../../../Utils/baseURL";
+import { Cookie } from "../../../Auth/Cookies";
+import Loading from "../../Loading/Loading";
+import Popup from "../../Popup/Popup";
+import { useNavigate } from "react-router-dom";
 const Content = () => {
   const [statusShop, setStatusShop] = useState(false);
   const [editOperationalShop, setEditOperationalShop] = useState(false);
-  const [loading, setLoading] = useState(true)
-  const [popup = {
-    show:false,
-    status: null,
-    message:null,
-    refresh:false,
-  }, setPopup] = useState([])
-  const navigate = useNavigate()
-  useEffect(function(){
+  const [loading, setLoading] = useState(true);
+  const [
+    popup = {
+      show: false,
+      status: null,
+      message: null,
+      refresh: false,
+    },
+    setPopup,
+  ] = useState([]);
+  const navigate = useNavigate();
+  useEffect(function () {
     (async () => {
-      try{
-        const token = Cookie('itemku_token')
-        const url = BASEURL()+'/api/shop/dashboard/profil-toko'
+      try {
+        const token = Cookie("itemku_token");
+        const url = BASEURL() + "/api/shop/dashboard/profil-toko";
         const request = await fetch(url, {
-          method: 'GET',
+          method: "GET",
           headers: {
             Authorization: token,
-            'Content-Type' : 'application/json'
-          }
-        })
-        const response = await request.json()
-        if(request.status === 200){
-          setLoading(false)
-          response.data.status === 'Buka' ? setStatusShop(true) : setStatusShop(false)
-        }else if(request.status === 403){
-          navigate('/login')
-        }else{
-          throw new Error("500")
+            "Content-Type": "application/json",
+          },
+        });
+        const response = await request.json();
+        if (request.status === 200) {
+          setLoading(false);
+          response.data.status === "Buka"
+            ? setStatusShop(true)
+            : setStatusShop(false);
+        } else if (request.status === 403) {
+          navigate("/login");
+        } else {
+          throw new Error("500");
         }
-      }catch(error){
-        setPopup({show:true, status:'Failed', message:'Server Error'})
+      } catch (error) {
+        setPopup({ show: true, status: "Failed", message: "Server Error" });
       }
-    })()
-  }, [])
+    })();
+  }, []);
   return (
     <>
       {loading && <Loading />}
-      {popup.show && <Popup status={popup.status} message={popup.message} refresh={popup.refresh} />}
+      {popup.show && (
+        <Popup
+          status={popup.status}
+          message={popup.message}
+          refresh={popup.refresh}
+        />
+      )}
       <div className={css.container_content}>
         <div className={css.wrapper_activity}>
           <div className={css.activity_text}>Aktivitas</div>
@@ -62,38 +73,52 @@ const Content = () => {
                 className={css.status_btn_action}
                 onClick={() => {
                   (async () => {
-                    try{
-                      setLoading(true)
-                      setPopup({show:false, status:null, message:null})
-                      const token = Cookie('itemku_token')
-                      const url = BASEURL()+'/api/shop/dashboard/pengaturan-toko/status'
+                    try {
+                      setLoading(true);
+                      setPopup({ show: false, status: null, message: null });
+                      const token = Cookie("itemku_token");
+                      const url =
+                        BASEURL() +
+                        "/api/shop/dashboard/pengaturan-toko/status";
                       const request = await fetch(url, {
-                        method: 'PATCH',
+                        method: "PATCH",
                         headers: {
                           Authorization: token,
-                          'Content-Type' : 'application/json'
+                          "Content-Type": "application/json",
                         },
-                        body : JSON.stringify({
-                          status: statusShop ? 'true' : 'false',
+                        body: JSON.stringify({
+                          status: statusShop ? "true" : "false",
                         }),
-                      })
-                      const response = await request.json()
-                      if(request.status === 200){
-                        setLoading(false)
-                        setPopup({show:true, status:'Success', message:response.message})
-                        statusShop ? setStatusShop(false) : setStatusShop(true)
-                      }else if(request.status === 400){
-                        setLoading(false)
-                        setPopup({show:true, status:'Failed', message:response.message})
-                      }else if(request.status === 403){
-                        navigate('/login')
-                      }else{
-                        throw new Error("500")
+                      });
+                      const response = await request.json();
+                      if (request.status === 200) {
+                        setLoading(false);
+                        setPopup({
+                          show: true,
+                          status: "Success",
+                          message: response.message,
+                        });
+                        statusShop ? setStatusShop(false) : setStatusShop(true);
+                      } else if (request.status === 400) {
+                        setLoading(false);
+                        setPopup({
+                          show: true,
+                          status: "Failed",
+                          message: response.message,
+                        });
+                      } else if (request.status === 403) {
+                        navigate("/login");
+                      } else {
+                        throw new Error("500");
                       }
-                    }catch(error){
-                      setPopup({show:true, status:'Failed', message:'Server Error'})
+                    } catch (error) {
+                      setPopup({
+                        show: true,
+                        status: "Failed",
+                        message: "Server Error",
+                      });
                     }
-                  })()
+                  })();
                 }}
               >
                 <div
